@@ -12,6 +12,6 @@ package com.mycompany.pereirafernando_jocderol;
 public class PereiraFernando_JocDeRol {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        System.out.println("Hello");
     }
 }
