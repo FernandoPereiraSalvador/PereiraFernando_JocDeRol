@@ -20,6 +20,7 @@ public class Jugador {
         this.puntsAtac = puntsAtac;
         this.puntsDefensa = puntsDefensa;
         this.vides = vides;
+     
     }
     // Getters
 
@@ -58,16 +59,21 @@ public class Jugador {
     }
     
     // Metodo ataca
-    public void ataca(Jugador jugador){
+    public void ataca(Jugador jugador) {
+
+        if (this instanceof Alien) {
+            ((Alien) this).enloquecer();
+        }
 
         System.out.println("ABANS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
         System.out.println("Atacat: " + jugador.toString());
 
         System.out.println("ATAC");
+
         jugador.esColpejatAmb(this.puntsAtac);
         this.esColpejatAmb(jugador.puntsAtac);
-        
+
         System.out.println("DESPRÉS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
         System.out.println("Atacat: " + jugador.toString());
@@ -79,12 +85,16 @@ public class Jugador {
     protected void esColpejatAmb(int quantitat) {
 
         int ataque = quantitat - puntsDefensa;
-        int videsAnteriors = vides;
+        int videsAnteriors = this.getVides();
 
-        if (ataque > 0) {
-            vides = vides - ataque;
+        if (ataque > 0 && !(this instanceof Guerrer)) {
+            this.setVides(this.getVides() - ataque);
+
+        } else if (ataque >= 5 && this instanceof Guerrer) {
+            this.setVides(this.getVides() - ataque);
 
         }
+
         System.out.println(nom + " és colpejat amb " + quantitat + " punts i es defén amb " + puntsDefensa + ". Vides: " + videsAnteriors + " - " + ataque + "= " + vides);
 
     }
