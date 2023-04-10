@@ -10,4 +10,8 @@ package inici;
  */
 public class Guerrer extends Huma{
     
+    public Guerrer(String nom, int puntsAtac, int puntsDefensa, int vides) {
+        super(nom, puntsAtac, puntsDefensa, vides);
+    }
+    
 }

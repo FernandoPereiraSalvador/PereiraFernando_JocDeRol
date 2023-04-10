@@ -10,4 +10,8 @@ package inici;
  */
 public class Alien extends Jugador {
     
+    public Alien(String nom, int puntsAtac, int puntsDefensa, int vides) {
+        super(nom, puntsAtac, puntsDefensa, vides);
+    }
+    
 }
