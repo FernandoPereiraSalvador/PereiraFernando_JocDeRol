@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package inici;
-
+import altres.Equip;
 /**
  *
  * @author Fernando
@@ -13,6 +13,7 @@ public class Jugador {
     private int puntsAtac;
     private int puntsDefensa;
     private int vides;
+    private Equip equip;
 
     // Constructor
     public Jugador(String nom, int puntsAtac, int puntsDefensa, int vides) {
@@ -39,7 +40,11 @@ public class Jugador {
     public int getVides() {
         return vides;
     }
-    
+
+    public Equip getEquip() {
+        return equip;
+    }
+
     // Setters
 
     protected void setNom(String nom) {
@@ -57,7 +62,17 @@ public class Jugador {
     protected void setVides(int vides) {
         this.vides = vides;
     }
-    
+
+    public void setEquip(Equip equip) {
+
+        if (this.getEquip() == null) {
+            equip.llevar(this);
+        } else {
+            equip.posa(this);
+
+        }
+    }
+
     // Metodo ataca
     public void ataca(Jugador jugador) {
 
@@ -105,7 +120,17 @@ public class Jugador {
         return "Jugador{" + "nom=" + nom + ", puntsAtac=" + puntsAtac + ", puntsDefensa=" + puntsDefensa + ", vides=" + vides + '}';
     }
 
-    
-    
+    public boolean equals(Jugador player) {
+        if (player == this) {
+            return true;
+        }
+        if (!(player instanceof Jugador)) {
+            return false;
+        }
+        Jugador jugador = (Jugador) player;
+        return nom.equals(jugador.nom);
+    }
+
+
     
 }

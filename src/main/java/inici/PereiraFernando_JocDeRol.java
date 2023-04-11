@@ -2,12 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Project/Maven2/JavaApp/src/main/java/${packagePath}/${mainClassName}.java to edit this template
  */
-package com.mycompany.pereirafernando_jocderol;
-
-import inici.Jugador;
-import inici.Huma;
-import inici.Alien;
-import inici.Guerrer;
+package inici;
+import altres.Equip;
 
 /**
  *
@@ -44,9 +40,19 @@ public class PereiraFernando_JocDeRol {
         NuevoAlien.ataca(NuevoGuerrer);
     }
 
+    static void provaFase4() {
+        
+        Equip pepes = new Equip("Pepes");
+        
+        Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
+        
+        NuevoAlien.setEquip(pepes);
+        pepes.llevar(NuevoAlien);
+    }
+
     public static void main(String[] args) {
 
-        provaFase2();
+        provaFase4();
 
     }
 }
