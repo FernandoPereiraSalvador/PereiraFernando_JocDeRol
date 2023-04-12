@@ -52,7 +52,7 @@ public class PereiraFernando_JocDeRol {
 
     public static void main(String[] args) {
 
-        provaFase4();
+        provaFase3();
 
     }
 }

@@ -3,17 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package inici;
-import altres.Equip;
+import altres.*;
+import java.util.ArrayList;
 /**
  *
  * @author Fernando
  */
 public class Jugador {
+
     private String nom;
     private int puntsAtac;
     private int puntsDefensa;
     private int vides;
     private Equip equip;
+    private ArrayList<Poder> poders = new ArrayList<Poder>();
 
     // Constructor
     public Jugador(String nom, int puntsAtac, int puntsDefensa, int vides) {
@@ -45,6 +48,11 @@ public class Jugador {
         return equip;
     }
 
+    public ArrayList<Poder> getPoders() {
+        return poders;
+    }
+    
+
     // Setters
 
     protected void setNom(String nom) {
@@ -73,6 +81,11 @@ public class Jugador {
         }
     }
 
+    public void setPoders(ArrayList<Poder> poders) {
+        this.poders = poders;
+    }
+
+
     // Metodo ataca
     public void ataca(Jugador jugador) {
 
@@ -85,9 +98,24 @@ public class Jugador {
         System.out.println("Atacat: " + jugador.toString());
 
         System.out.println("ATAC");
+        
+        int BonoAtaqueThis = 0;
+        int BonoAtaqueJugador = 0;
+        int BonoDefensaThis = 0;
+        int BonoDefensaJugador = 0;
+        
+        for (Poder poder : this.poders) {
+            BonoAtaqueThis += poder.getBonusAtac();
+            BonoDefensaThis += poder.getBonusDefensa();
+        }
+        
+        for (Poder poder : jugador.poders) {
+            BonoAtaqueJugador += poder.getBonusAtac();
+            BonoDefensaJugador += poder.getBonusDefensa();
+        }
 
-        jugador.esColpejatAmb(this.puntsAtac);
-        this.esColpejatAmb(jugador.puntsAtac);
+        jugador.esColpejatAmb(this.puntsAtac,BonoAtaqueThis,BonoDefensaThis);
+        this.esColpejatAmb(jugador.puntsAtac,BonoAtaqueJugador,BonoDefensaJugador);
 
         System.out.println("DESPRÉS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
@@ -97,9 +125,9 @@ public class Jugador {
 
     // Metodo esColpejatAmb
     // Pep Garcia és colpejat amb 27 punts i es defén amb 8. Vides: 39 - 19 = 20
-    protected void esColpejatAmb(int quantitat) {
+    protected void esColpejatAmb(int quantitat, int bonoAtaque,int bonoDefensa) {
 
-        int ataque = quantitat - puntsDefensa;
+        int ataque = (quantitat+bonoAtaque) - (puntsDefensa+bonoDefensa);
         int videsAnteriors = this.getVides();
 
         if (ataque > 0 && !(this instanceof Guerrer)) {
@@ -131,6 +159,20 @@ public class Jugador {
         return nom.equals(jugador.nom);
     }
 
+    // Metodo posa
+    public void posa(Poder poder) {
 
+        if (!this.poders.contains(poder)) {
+            this.poders.add(poder);
+
+        }
+
+    }
+
+    public void llevar(Poder poder) {
+        if (this.poders.contains(poder)) {
+            this.poders.remove(poder);
+        }
+    }
     
 }
