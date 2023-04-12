@@ -17,6 +17,7 @@ public class Jugador {
     private int vides;
     private Equip equip;
     private ArrayList<Poder> poders = new ArrayList<Poder>();
+    ArrayList<Jugador> llista = new ArrayList<Jugador>();
 
     // Constructor
     public Jugador(String nom, int puntsAtac, int puntsDefensa, int vides) {
@@ -174,5 +175,24 @@ public class Jugador {
             this.poders.remove(poder);
         }
     }
-    
+    //Menu
+
+    public static void menu() {
+        int opcion = -1;
+        
+        while(opcion!=0){
+            System.out.println("JUGADORS");
+            System.out.println("1.Crear");
+            System.out.println("2.Consultar");
+            System.out.println("3.Eliminar");
+            System.out.println("4.Assignar a equip");
+            System.out.println("5.Llevar d'equip");
+            System.out.println("6.Assignar poder");
+            System.out.println("0.Eixir");
+            
+            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+        }
+    }
+
 }
+

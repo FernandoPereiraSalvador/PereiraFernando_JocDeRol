@@ -4,6 +4,7 @@
  */
 package inici;
 import altres.Equip;
+import altres.Poder;
 
 /**
  *
@@ -45,14 +46,50 @@ public class PereiraFernando_JocDeRol {
         Equip pepes = new Equip("Pepes");
         
         Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
-        
+
         NuevoAlien.setEquip(pepes);
         pepes.llevar(NuevoAlien);
     }
 
+    public static void menuConfiguracio() {
+        int opcionMenu = -1;
+
+        while (opcionMenu != 0) {
+            System.out.println("1.Jugadors");
+            System.out.println("2.Equips");
+            System.out.println("3.Poders");
+            System.out.println("0.Eixir");
+
+            opcionMenu = teclat.Teclat.lligInt("Introduce la opcion: ");
+            
+            switch (opcionMenu) {
+                case 1 -> Jugador.menu();
+                case 2 -> Equip.menu();
+                case 3 -> Poder.menu();
+                default -> System.out.println("Has introducido una opción erronea");
+            }
+
+        }
+
+    }
+
     public static void main(String[] args) {
 
-        provaFase3();
+        int opcion = -1;
+        
+        while(opcion != 0){
+            System.out.println("JOC DE ROL");
+            System.out.println("1.Configuració");
+            System.out.println("2.Jugar");
+            System.out.println("0.Eixir");
+            
+            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            
+            if(opcion == 1){
+                menuConfiguracio();
+            }
+        }
+        
 
     }
 }

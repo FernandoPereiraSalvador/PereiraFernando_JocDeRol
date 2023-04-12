@@ -16,6 +16,7 @@ public class Equip {
     private String nom;
 
     ArrayList<Jugador> jugadors = new ArrayList<Jugador>();
+    ArrayList<Equip> llista = new ArrayList<Equip>();
 
     // Getter
     public String getNom() {
@@ -54,6 +55,21 @@ public class Equip {
     @Override
     public String toString() {
         return "Equip{" + "nom=" + nom + ", jugadors=" + jugadors + '}';
+    }
+
+    //Menu
+    public static void menu() {
+        int opcion = -1;
+
+        while (opcion != 0) {
+            System.out.println("EQUIPS");
+            System.out.println("1.Crear");
+            System.out.println("2.Consultar");
+            System.out.println("3.Eliminar");
+            System.out.println("0.Eixir");
+
+            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+        }
     }
 
 }
