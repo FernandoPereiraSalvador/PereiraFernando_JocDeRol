@@ -17,7 +17,8 @@ public class Jugador {
     private int vides;
     private Equip equip;
     private ArrayList<Poder> poders = new ArrayList<Poder>();
-    ArrayList<Jugador> llista = new ArrayList<Jugador>();
+    static ArrayList<Jugador> llista = new ArrayList<Jugador>();
+    static int cantidadVidas = 200;
 
     // Constructor
     public Jugador(String nom, int puntsAtac, int puntsDefensa, int vides) {
@@ -191,8 +192,84 @@ public class Jugador {
             System.out.println("0.Eixir");
             
             opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            
+            if(opcion==1){
+                crear();
+            }else if(opcion==2){
+                consultar();
+            }else if(opcion==3){
+                eliminar();
+            }else if(opcion==4){
+                assignarEquip();
+            }else if(opcion==6){
+                assignarPoder();
+            }
         }
     }
 
-}
+    public static void crear() {
+        char tipoJugador = teclat.Teclat.lligChar("Introduce el tipo de jugador", "H G A");
+        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        int puntsAtac = teclat.Teclat.lligInt("Introduce los puntos de ataque: ", 1, 100);
+        int puntsDefensa = Math.abs(puntsAtac - 100);
 
+        Jugador nuevoJugador = new Jugador(nom, puntsAtac, puntsDefensa, cantidadVidas);
+
+        if (!llista.contains(nuevoJugador)) {
+            llista.add(nuevoJugador);
+        } else {
+            System.out.println("El jugador ya existe");
+        }
+    }
+
+    public static void consultar() {
+        for (Jugador jugador : llista) {
+            System.out.println(jugador);
+        }
+    }
+
+    public static void eliminar() {
+
+        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+
+        for (Jugador jugador : llista) {
+            if(jugador.getNom().equals(nom)){
+                llista.remove(jugador);
+                break;
+            }
+        }
+
+    }
+
+    public static void assignarEquip() {
+        String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
+        String nomEquip = teclat.Teclat.lligString("Introduce el nombre del equipo: ");
+
+        int indiceJugador = llista.indexOf(nom);
+
+        Jugador jugador = llista.get(indiceJugador);
+
+        int indiceEquip = Equip.llista.indexOf(nomEquip);
+        
+        Equip equip = Equip.llista.get(indiceEquip);
+        
+        equip.posa(jugador);
+
+    }
+
+    public static void assignarPoder() {
+        String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
+        String poderNombre = teclat.Teclat.lligString("Introduce el nombre del poder: ");
+
+        int indiceJugador = llista.indexOf(nom);
+
+        Jugador jugador = llista.get(indiceJugador);
+        
+        int indicePoder = Poder.llista.indexOf(poderNombre);
+        
+        Poder poder = Poder.llista.get(indicePoder);
+        
+        jugador.poders.add(poder);
+    }
+
+}

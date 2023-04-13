@@ -5,6 +5,7 @@
 package inici;
 import altres.Equip;
 import altres.Poder;
+import java.util.Random;
 
 /**
  *
@@ -71,6 +72,51 @@ public class PereiraFernando_JocDeRol {
 
         }
 
+    }
+    
+    public static void jugar(){
+        
+        int opcion = 0;
+        
+        System.out.println("1.Automatizat");
+        System.out.println("2.Manual");
+        
+        opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+        
+        switch (opcion) {
+            case 1 -> Automatizat();
+            case 2 -> Manual();
+            default -> System.out.println("Opcion incorrecta");
+        }
+    }
+    
+    public static void Automatizat(){
+        while(Jugador.llista.size()>1){
+        // crea un objeto Random
+        Random randJugador1 = new Random();
+        Random randJugador2 = new Random();
+        
+        // genera un índice al azar dentro del rango de los índices del ArrayList
+        int randomIndexJugador1 = randJugador1.nextInt(Jugador.llista.size());
+        int randomIndexJugador2 = randJugador1.nextInt(Jugador.llista.size());
+        
+        // obtiene el elemento correspondiente del ArrayList utilizando el índice generado al azar
+        Jugador randomJugador1 = Jugador.llista.get(randomIndexJugador1);
+        Jugador randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+        
+        randomJugador1.ataca(randomJugador2);
+        }
+
+    }
+  
+    public static void Manual() {
+        while (Jugador.llista.size() > 1) {
+            for (Jugador jugador : Jugador.llista) {
+                System.out.println("Turno de " + jugador.getNom());
+                int jugadorAtacado = teclat.Teclat.lligInt("¿A que jugador deseas atacar?", 0, Jugador.llista.size());
+                jugador.ataca(Jugador.llista.get(jugadorAtacado));
+            }
+        }
     }
 
     public static void main(String[] args) {

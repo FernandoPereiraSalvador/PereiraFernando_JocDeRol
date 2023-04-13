@@ -16,7 +16,7 @@ public class Equip {
     private String nom;
 
     ArrayList<Jugador> jugadors = new ArrayList<Jugador>();
-    ArrayList<Equip> llista = new ArrayList<Equip>();
+    public static ArrayList<Equip> llista = new ArrayList<Equip>();
 
     // Getter
     public String getNom() {
@@ -69,6 +69,43 @@ public class Equip {
             System.out.println("0.Eixir");
 
             opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            
+            switch (opcion) {
+                case 1 -> crear();
+                case 2 -> consultar();
+                case 3 -> eliminar();
+                default -> System.out.println("No se ha encontrado la opcion");
+            }
+        }
+    }
+
+    public static void crear(){
+        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        
+        Equip nuevoEquip = new Equip(nom);
+
+        if (!llista.contains(nuevoEquip)) {
+            llista.add(nuevoEquip);
+        } else {
+            System.out.println("El equipo ya existe");
+        }
+    }
+
+    public static void consultar() {
+        for (Equip equip : llista) {
+            System.out.println(equip);
+        }
+    }
+    
+        public static void eliminar(){
+        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        
+        Equip nuevoEquip = new Equip(nom);
+
+        if (!llista.contains(nuevoEquip)) {
+            llista.remove(nuevoEquip);
+        } else {
+            System.out.println("El equipo no existe");
         }
     }
 

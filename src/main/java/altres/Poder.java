@@ -11,11 +11,50 @@ import java.util.ArrayList;
  * @author Fernando
  */
 public class Poder {
-    
+
     private String nom;
     private int bonusAtac;
     private int bonusDefensa;
-    ArrayList<Poder> llista = new ArrayList<Poder>();
+    public static ArrayList<Poder> llista = new ArrayList<Poder>();
+
+    // Getters
+    public String getNom() {
+        return nom;
+    }
+
+    public int getBonusAtac() {
+        return bonusAtac;
+    }
+
+    public int getBonusDefensa() {
+        return bonusDefensa;
+    }
+
+    // Setters
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public void setBonusAtac(int bonusAtac) {
+        this.bonusAtac = bonusAtac;
+    }
+
+    public void setBonusDefensa(int bonusDefensa) {
+        this.bonusDefensa = bonusDefensa;
+    }
+
+    // Constructor
+    public Poder(String nom, int bonusAtac, int bonusDefensa) {
+        this.nom = nom;
+        this.bonusAtac = bonusAtac;
+        this.bonusDefensa = bonusDefensa;
+    }
+
+    //toString
+    @Override
+    public String toString() {
+        return "java{" + "nom=" + nom + ", bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
+    }
 
     //Menu
     public static void menu() {
@@ -29,53 +68,52 @@ public class Poder {
             System.out.println("0.Eixir");
 
             opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+
+            switch (opcion) {
+                case 1 ->
+                    crear();
+                case 2 ->
+                    consultar();
+                case 3 ->
+                    eliminar();
+                default ->
+                    System.out.println("No se ha encontrado la opcion");
+            }
         }
     }
 
-    
-    // Getters
+    public static void crear() {
+        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        int bonusAtac = teclat.Teclat.lligInt("Introduce el bono de ataque: ");
+        int bonusDefensa = teclat.Teclat.lligInt("Introduce el bono de defensa: ");
 
-    public String getNom() {
-        return nom;
+        Poder nuevoPoder = new Poder(nom, bonusAtac, bonusDefensa);
+
+        if (!llista.contains(nuevoPoder)) {
+            llista.add(nuevoPoder);
+        } else {
+            System.out.println("El equipo ya existe");
+        }
     }
 
-    public int getBonusAtac() {
-        return bonusAtac;
+    public static void consultar() {
+        for (Poder poder : llista) {
+            System.out.println(poder);
+        }
     }
 
-    public int getBonusDefensa() {
-        return bonusDefensa;
-    }
-    
-    // Setters
+    public static void eliminar() {
+        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        int bonusAtac = teclat.Teclat.lligInt("Introduce el bono de ataque: ");
+        int bonusDefensa = teclat.Teclat.lligInt("Introduce el bono de defensa: ");
 
-    public void setNom(String nom) {
-        this.nom = nom;
+        Poder nuevoPoder = new Poder(nom, bonusAtac, bonusDefensa);
+
+        if (!llista.contains(nuevoPoder)) {
+            llista.remove(nuevoPoder);
+        } else {
+            System.out.println("El poder no existe");
+        }
     }
 
-    public void setBonusAtac(int bonusAtac) {
-        this.bonusAtac = bonusAtac;
-    }
-
-    public void setBonusDefensa(int bonusDefensa) {
-        this.bonusDefensa = bonusDefensa;
-    }
-    
-    // Constructor
-
-    public Poder(String nom, int bonusAtac, int bonusDefensa) {
-        this.nom = nom;
-        this.bonusAtac = bonusAtac;
-        this.bonusDefensa = bonusDefensa;
-    }
-    
-    //toString
-
-    @Override
-    public String toString() {
-        return "java{" + "nom=" + nom + ", bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
-    }
-    
-
-    
 }
