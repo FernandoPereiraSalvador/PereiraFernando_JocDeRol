@@ -5,6 +5,7 @@
 package inici;
 import altres.Equip;
 import altres.Poder;
+import altres.*;
 import java.util.Random;
 
 /**
@@ -31,15 +32,15 @@ public class PereiraFernando_JocDeRol {
     static void provaFase2() {
         Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
         Guerrer NuevoGuerrer = new Guerrer("Guerrer", 9, 3, 9);
-
-        NuevoAlien.ataca(NuevoGuerrer);
+/*
+        NuevoAlien.ataca(NuevoGuerrer);*/
     }
 
     static void provaFase3() {
         Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
         Guerrer NuevoGuerrer = new Guerrer("Guerrer", 9, 3, 9);
-
-        NuevoAlien.ataca(NuevoGuerrer);
+/*
+        NuevoAlien.ataca(NuevoGuerrer);*/
     }
 
     static void provaFase4() {
@@ -102,19 +103,28 @@ public class PereiraFernando_JocDeRol {
         
         // obtiene el elemento correspondiente del ArrayList utilizando el índice generado al azar
         Jugador randomJugador1 = Jugador.llista.get(randomIndexJugador1);
-        Jugador randomJugador2 = Jugador.llista.get(randomIndexJugador2);
-        
-        randomJugador1.ataca(randomJugador2);
+            Jugador randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+            try {
+                randomJugador1.ataca(randomJugador2);
+            } catch (AtacAMortException | AtacEllMateixException e) {
+                System.out.println(e.getMessage());
+            }
+
         }
 
     }
-  
+
     public static void Manual() {
         while (Jugador.llista.size() > 1) {
             for (Jugador jugador : Jugador.llista) {
                 System.out.println("Turno de " + jugador.getNom());
                 int jugadorAtacado = teclat.Teclat.lligInt("¿A que jugador deseas atacar?", 0, Jugador.llista.size());
-                jugador.ataca(Jugador.llista.get(jugadorAtacado));
+
+                try {
+                    jugador.ataca(Jugador.llista.get(jugadorAtacado));
+                } catch (AtacAMortException | AtacEllMateixException e) {
+                    System.out.println(e.getMessage());
+                }
             }
         }
     }

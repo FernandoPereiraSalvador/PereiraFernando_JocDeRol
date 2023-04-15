@@ -89,7 +89,7 @@ public class Jugador {
 
 
     // Metodo ataca
-    public void ataca(Jugador jugador) {
+    public void ataca(Jugador jugador) throws AtacAMortException, AtacEllMateixException{
 
         if (this instanceof Alien) {
             ((Alien) this).enloquecer();
@@ -115,7 +115,15 @@ public class Jugador {
             BonoAtaqueJugador += poder.getBonusAtac();
             BonoDefensaJugador += poder.getBonusDefensa();
         }
-
+        
+        if(this.getVides()<=0 || jugador.getVides()<=0){
+            throw new AtacAMortException();
+        }
+        
+        if(this.getNom().equals(jugador.getNom())){
+            throw new AtacEllMateixException();
+        }
+        
         jugador.esColpejatAmb(this.puntsAtac,BonoAtaqueThis,BonoDefensaThis);
         this.esColpejatAmb(jugador.puntsAtac,BonoAtaqueJugador,BonoDefensaJugador);
 
