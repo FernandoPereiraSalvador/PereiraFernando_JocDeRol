@@ -54,7 +54,13 @@ public class Equip {
 
     @Override
     public String toString() {
-        return "Equip{" + "nom=" + nom + ", jugadors=" + jugadors + '}';
+        String texto = "Equip" + nom;
+        
+        for(Jugador jugador : this.jugadors){
+            texto += jugador.toString();
+        }
+        
+        return texto;
     }
 
     //Menu

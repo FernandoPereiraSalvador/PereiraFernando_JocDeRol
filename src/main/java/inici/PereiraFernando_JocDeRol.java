@@ -14,45 +14,6 @@ import java.util.Random;
  */
 public class PereiraFernando_JocDeRol {
 
-    static void provaFase1() {
-        System.out.println("Vaig a crear un huma");
-        Huma NuevoHumano = new Huma("Pepe", 4, 3, 500);
-        System.out.println(NuevoHumano.toString());
-
-        System.out.println("Vaig a crear un Guerrer");
-        Guerrer NuevoGuerrer = new Guerrer("Guerrer", 9, 3, 9);
-        System.out.println(NuevoGuerrer.toString());
-
-        System.out.println("Vaig a crear un Alien");
-        Alien NuevoAlien = new Alien("Alien", 3, 4, 22);
-        System.out.println(NuevoAlien.toString());
-
-    }
-
-    static void provaFase2() {
-        Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
-        Guerrer NuevoGuerrer = new Guerrer("Guerrer", 9, 3, 9);
-/*
-        NuevoAlien.ataca(NuevoGuerrer);*/
-    }
-
-    static void provaFase3() {
-        Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
-        Guerrer NuevoGuerrer = new Guerrer("Guerrer", 9, 3, 9);
-/*
-        NuevoAlien.ataca(NuevoGuerrer);*/
-    }
-
-    static void provaFase4() {
-        
-        Equip pepes = new Equip("Pepes");
-        
-        Alien NuevoAlien = new Alien("Alien", 3, 4, 15);
-
-        NuevoAlien.setEquip(pepes);
-        pepes.llevar(NuevoAlien);
-    }
-
     public static void menuConfiguracio() {
         int opcionMenu = -1;
 
@@ -99,7 +60,7 @@ public class PereiraFernando_JocDeRol {
         
         // genera un índice al azar dentro del rango de los índices del ArrayList
         int randomIndexJugador1 = randJugador1.nextInt(Jugador.llista.size());
-        int randomIndexJugador2 = randJugador1.nextInt(Jugador.llista.size());
+        int randomIndexJugador2 = randJugador2.nextInt(Jugador.llista.size());
         
         // obtiene el elemento correspondiente del ArrayList utilizando el índice generado al azar
         Jugador randomJugador1 = Jugador.llista.get(randomIndexJugador1);

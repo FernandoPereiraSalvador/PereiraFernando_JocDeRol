@@ -75,12 +75,13 @@ public class Jugador {
 
     public void setEquip(Equip equip) {
 
-        if (this.getEquip() == null) {
+        if (this.getEquip() != null) {
             equip.llevar(this);
         } else {
             equip.posa(this);
 
         }
+        
     }
 
     public void setPoders(ArrayList<Poder> poders) {
@@ -155,7 +156,18 @@ public class Jugador {
     //toString
     @Override
     public String toString() {
-        return "Jugador{" + "nom=" + nom + ", puntsAtac=" + puntsAtac + ", puntsDefensa=" + puntsDefensa + ", vides=" + vides + '}';
+        
+        String tipo = "";
+        
+        if(this instanceof Guerrer){
+            tipo = "Guerrer";
+        }else if(this instanceof Alien){
+            tipo = "Alien";
+        }else if(this instanceof Huma){
+            tipo = "Huma";
+        }
+        
+        return nom + "(" + tipo + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides +")" ;
     }
 
     public boolean equals(Jugador player) {
@@ -201,16 +213,14 @@ public class Jugador {
             
             opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
             
-            if(opcion==1){
-                crear();
-            }else if(opcion==2){
-                consultar();
-            }else if(opcion==3){
-                eliminar();
-            }else if(opcion==4){
-                assignarEquip();
-            }else if(opcion==6){
-                assignarPoder();
+            switch (opcion) {
+                case 1 -> crear();
+                case 2 -> consultar();
+                case 3 -> eliminar();
+                case 4 -> assignarEquip();
+                case 6 -> assignarPoder();
+                default -> {
+                }
             }
         }
     }
@@ -220,8 +230,17 @@ public class Jugador {
         String nom = teclat.Teclat.lligString("Introduce el nombre: ");
         int puntsAtac = teclat.Teclat.lligInt("Introduce los puntos de ataque: ", 1, 100);
         int puntsDefensa = Math.abs(puntsAtac - 100);
-
-        Jugador nuevoJugador = new Jugador(nom, puntsAtac, puntsDefensa, cantidadVidas);
+        
+        Jugador nuevoJugador = null;
+        
+        switch (tipoJugador) {
+            case 'H' -> nuevoJugador = new Huma(nom, puntsAtac, puntsDefensa, cantidadVidas);
+            case 'G' -> nuevoJugador = new Guerrer(nom, puntsAtac, puntsDefensa, cantidadVidas);
+            case 'A' -> nuevoJugador = new Alien(nom, puntsAtac, puntsDefensa, cantidadVidas);
+            default -> {
+            }
+        }
+        
 
         if (!llista.contains(nuevoJugador)) {
             llista.add(nuevoJugador);
@@ -252,17 +271,32 @@ public class Jugador {
     public static void assignarEquip() {
         String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
         String nomEquip = teclat.Teclat.lligString("Introduce el nombre del equipo: ");
-
-        int indiceJugador = llista.indexOf(nom);
-
-        Jugador jugador = llista.get(indiceJugador);
-
-        int indiceEquip = Equip.llista.indexOf(nomEquip);
         
-        Equip equip = Equip.llista.get(indiceEquip);
+        Jugador jugador = null;
+        Equip equip = null;
         
-        equip.posa(jugador);
+        for(int i=0;i<llista.size();i++){
+            jugador = llista.get(i);
+            if(jugador.getNom().equals(nom)){
+                break;
+            }else{
+                jugador = null;
+            }
+        }
+        
+        for(int i=0;i<Equip.llista.size();i++){
+            equip = Equip.llista.get(i);
+            if(equip.getNom().equals(nomEquip)){
+                break;
+            }else{
+                equip = null;
+            }
+        }
 
+        if (equip != null && jugador != null) {
+            equip.posa(jugador);
+
+        }
     }
 
     public static void assignarPoder() {
