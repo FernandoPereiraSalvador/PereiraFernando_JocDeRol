@@ -68,7 +68,7 @@ public class Equip {
         int opcion = -1;
 
         while (opcion != 0) {
-            System.out.println("EQUIPS");
+            inici.PereiraFernando_JocDeRol.printMenuTitle("EQUIPS");
             System.out.println("1.Crear");
             System.out.println("2.Consultar");
             System.out.println("3.Eliminar");
@@ -98,9 +98,16 @@ public class Equip {
     }
 
     public static void consultar() {
-        for (Equip equip : llista) {
-            System.out.println(equip);
+        
+        if (llista.isEmpty()) {
+            System.out.println("No hay equipos creados");
+        } else {
+            System.out.println("Lista de equipos: ");
+            for (Equip equip : llista) {
+                System.out.println(equip);
+            }
         }
+
     }
     
         public static void eliminar(){

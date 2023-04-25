@@ -18,6 +18,7 @@ public class PereiraFernando_JocDeRol {
         int opcionMenu = -1;
 
         while (opcionMenu != 0) {
+            printMenuTitle("CONFIGURACIÓN");
             System.out.println("1.Jugadors");
             System.out.println("2.Equips");
             System.out.println("3.Poders");
@@ -33,6 +34,7 @@ public class PereiraFernando_JocDeRol {
             }
 
         }
+        
 
     }
     
@@ -90,12 +92,21 @@ public class PereiraFernando_JocDeRol {
         }
     }
 
+    public static void printMenuTitle(String title) {
+        int titleLength = title.length();
+        int lineLength = 40;
+        int spaces = (lineLength - titleLength) / 2;
+        System.out.println("\n" + "=".repeat(lineLength));
+        System.out.println(" ".repeat(spaces) + title);
+        System.out.println("=".repeat(lineLength) + "\n");
+    }
+
     public static void main(String[] args) {
 
         int opcion = -1;
         
         while(opcion != 0){
-            System.out.println("JOC DE ROL");
+            printMenuTitle("JOC DE ROL");
             System.out.println("1.Configuració");
             System.out.println("2.Jugar");
             System.out.println("0.Eixir");
@@ -104,6 +115,7 @@ public class PereiraFernando_JocDeRol {
             
             if(opcion == 1){
                 menuConfiguracio();
+                opcion = -1;
             }
         }
         

@@ -53,7 +53,7 @@ public class Poder {
     //toString
     @Override
     public String toString() {
-        return "java{" + "nom=" + nom + ", bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
+        return nom  + " { bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
     }
 
     //Menu
@@ -61,7 +61,7 @@ public class Poder {
         int opcion = -1;
 
         while (opcion != 0) {
-            System.out.println("PODERS");
+            inici.PereiraFernando_JocDeRol.printMenuTitle("PODERS");
             System.out.println("1.Crear");
             System.out.println("2.Consultar");
             System.out.println("3.Eliminar");
@@ -97,9 +97,14 @@ public class Poder {
     }
 
     public static void consultar() {
-        for (Poder poder : llista) {
-            System.out.println(poder);
+        if (llista.isEmpty()) {
+            System.out.println("No hay poderes creados");
+        } else {
+            for (Poder poder : llista) {
+                poder.toString();
+            }
         }
+
     }
 
     public static void eliminar() {

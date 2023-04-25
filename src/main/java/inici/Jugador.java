@@ -202,7 +202,7 @@ public class Jugador {
         int opcion = -1;
         
         while(opcion!=0){
-            System.out.println("JUGADORS");
+            inici.PereiraFernando_JocDeRol.printMenuTitle("JUGADORS");
             System.out.println("1.Crear");
             System.out.println("2.Consultar");
             System.out.println("3.Eliminar");
@@ -218,6 +218,7 @@ public class Jugador {
                 case 2 -> consultar();
                 case 3 -> eliminar();
                 case 4 -> assignarEquip();
+                case 5 -> llevarEquip();
                 case 6 -> assignarPoder();
                 default -> {
                 }
@@ -226,7 +227,7 @@ public class Jugador {
     }
 
     public static void crear() {
-        char tipoJugador = teclat.Teclat.lligChar("Introduce el tipo de jugador", "H G A");
+        char tipoJugador = teclat.Teclat.lligChar("Introduce el tipo de jugador", "HGA");
         String nom = teclat.Teclat.lligString("Introduce el nombre: ");
         int puntsAtac = teclat.Teclat.lligInt("Introduce los puntos de ataque: ", 1, 100);
         int puntsDefensa = Math.abs(puntsAtac - 100);
@@ -235,35 +236,56 @@ public class Jugador {
         
         switch (tipoJugador) {
             case 'H' -> nuevoJugador = new Huma(nom, puntsAtac, puntsDefensa, cantidadVidas);
-            case 'G' -> nuevoJugador = new Guerrer(nom, puntsAtac, puntsDefensa, cantidadVidas);
-            case 'A' -> nuevoJugador = new Alien(nom, puntsAtac, puntsDefensa, cantidadVidas);
+            case 'G' ->
+                nuevoJugador = new Guerrer(nom, puntsAtac, puntsDefensa, cantidadVidas);
+            case 'A' ->
+                nuevoJugador = new Alien(nom, puntsAtac, puntsDefensa, cantidadVidas);
             default -> {
             }
         }
-        
+        boolean encontrado = false;
+        for (Jugador jugador : llista) {
+            if (jugador.getNom().equals(nuevoJugador.getNom())) {
+                encontrado = true;
+            }
+        }
 
-        if (!llista.contains(nuevoJugador)) {
-            llista.add(nuevoJugador);
-        } else {
+        if (encontrado) {
             System.out.println("El jugador ya existe");
+        } else {
+            llista.add(nuevoJugador);
+            System.out.println("El jugador se ha creado correctamente");
         }
     }
 
     public static void consultar() {
-        for (Jugador jugador : llista) {
-            System.out.println(jugador);
+
+        if (llista.isEmpty()) {
+            System.out.println("No hay jugadores creados");
+        } else {
+            System.out.println("Lista de jugadores:");
+            for (Jugador jugador : llista) {
+                System.out.println(jugador);
+            }
         }
     }
 
     public static void eliminar() {
 
         String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        boolean Noeliminado = true;
 
         for (Jugador jugador : llista) {
             if(jugador.getNom().equals(nom)){
                 llista.remove(jugador);
+                System.out.println("Se ha eliminado el jugador correctamente");
+                Noeliminado = false;
                 break;
             }
+        }
+        
+        if(Noeliminado){
+            System.out.println("No se ha encontrado al jugador");
         }
 
     }
@@ -295,7 +317,9 @@ public class Jugador {
 
         if (equip != null && jugador != null) {
             equip.posa(jugador);
-
+            System.out.println("El jugador se ha asignado al equipo correctamente");
+        }else{
+            System.out.println("El jugador o el equipo no existen");
         }
     }
 
@@ -303,15 +327,53 @@ public class Jugador {
         String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
         String poderNombre = teclat.Teclat.lligString("Introduce el nombre del poder: ");
 
-        int indiceJugador = llista.indexOf(nom);
+        try {
+            int indiceJugador = llista.indexOf(nom);
 
-        Jugador jugador = llista.get(indiceJugador);
+            Jugador jugador = llista.get(indiceJugador);
+
+            int indicePoder = Poder.llista.indexOf(poderNombre);
+
+            Poder poder = Poder.llista.get(indicePoder);
+
+            jugador.poders.add(poder);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("El jugador o el poder no existen");
+        }
+    
+    }
+    
+    public static void llevarEquip(){
+                String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
+        String nomEquip = teclat.Teclat.lligString("Introduce el nombre del equipo: ");
         
-        int indicePoder = Poder.llista.indexOf(poderNombre);
+        Jugador jugador = null;
+        Equip equip = null;
         
-        Poder poder = Poder.llista.get(indicePoder);
+        for(int i=0;i<llista.size();i++){
+            jugador = llista.get(i);
+            if(jugador.getNom().equals(nom)){
+                break;
+            }else{
+                jugador = null;
+            }
+        }
         
-        jugador.poders.add(poder);
+        for(int i=0;i<Equip.llista.size();i++){
+            equip = Equip.llista.get(i);
+            if(equip.getNom().equals(nomEquip)){
+                break;
+            }else{
+                equip = null;
+            }
+        }
+
+        if (equip != null && jugador != null) {
+            equip.llevar(jugador);
+            System.out.println(" El jugador se ha eliminado del equipo correctamente");
+        }else{
+            System.out.println("El jugador o el equipo no existen");
+        }
     }
 
 }
