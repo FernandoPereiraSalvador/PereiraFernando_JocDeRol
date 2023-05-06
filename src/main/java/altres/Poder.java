@@ -18,45 +18,93 @@ public class Poder {
     public static ArrayList<Poder> llista = new ArrayList<Poder>();
 
     // Getters
+    /**
+     * El getter del nombre de la clase poder
+     * 
+     * @return El nombre del poder
+     */
     public String getNom() {
         return nom;
     }
 
+    /**
+     * El getter del bono de ataque de la clase poder
+     * 
+     * @return El int del bono de ataque
+     */
     public int getBonusAtac() {
         return bonusAtac;
     }
 
+    /**
+     * El getter del bono de ataque de la clase poder
+     * 
+     * @return El int del bono de defensa
+     */
     public int getBonusDefensa() {
         return bonusDefensa;
     }
 
     // Setters
+    /**
+     * El setter del nombre del poder
+     * 
+     * @param nom El nombre del poder
+     */
     public void setNom(String nom) {
         this.nom = nom;
     }
 
+    /**
+     * El setter del bono de ataque
+     * 
+     * @param bonusAtac El int del bono de ataque
+     */
     public void setBonusAtac(int bonusAtac) {
         this.bonusAtac = bonusAtac;
     }
 
+    /**
+     * El setter del bono de defensa
+     * 
+     * @param bonusDefensa El int del bono de defensa
+     */
     public void setBonusDefensa(int bonusDefensa) {
         this.bonusDefensa = bonusDefensa;
     }
 
     // Constructor
+    /**
+     * El constructor de la clase poder
+     * 
+     * @param nom          El nombre del poder
+     * @param bonusAtac    El int del bono de ataque
+     * @param bonusDefensa El int del bono de defensa
+     */
     public Poder(String nom, int bonusAtac, int bonusDefensa) {
         this.nom = nom;
         this.bonusAtac = bonusAtac;
         this.bonusDefensa = bonusDefensa;
     }
 
-    //toString
+    /**
+     * Esta es una función Java que sobrescribe el método por defecto toString()
+     * para devolver una cadena
+     * del nombre, bono de ataque y bono de defensa de un objeto.
+     * 
+     * @return Una representación de cadena del nombre de un objeto y sus atributos
+     *         bonusAtac y bonusDefensa.
+     */
     @Override
     public String toString() {
-        return nom  + " { bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
+        return nom + " { bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
     }
 
-    //Menu
+    /**
+     * Esta función muestra un menú con opciones para crear, consultar o eliminar
+     * potencias y realiza un bucle hasta que el
+     * usuario decida salir.
+     */
     public static void menu() {
         int opcion = -1;
 
@@ -82,6 +130,11 @@ public class Poder {
         }
     }
 
+    /**
+     * Esta función Java crea un nuevo objeto "Poder" con el nombre, bono de ataque
+     * y bono de defensa introducidos por el usuario.
+     * , y lo añade a una lista si no existe ya.
+     */
     public static void crear() {
         String nom = teclat.Teclat.lligString("Introduce el nombre: ");
         int bonusAtac = teclat.Teclat.lligInt("Introduce el bono de ataque: ");
@@ -96,17 +149,27 @@ public class Poder {
         }
     }
 
+    /**
+     * La función "consultar" comprueba si una lista de potencias está vacía e
+     * imprime un mensaje en consecuencia, o bien
+     * imprime cada potencia de la lista.
+     */
     public static void consultar() {
         if (llista.isEmpty()) {
             System.out.println("No hay poderes creados");
         } else {
+            System.out.println("Lista de poderes: ");
             for (Poder poder : llista) {
-                poder.toString();
+                System.out.println(poder.toString());
             }
         }
 
     }
 
+    /**
+     * Esta función Java elimina una potencia de una lista si existe, basándose en
+     * los datos introducidos por el usuario para la potencia.
+     */
     public static void eliminar() {
         String nom = teclat.Teclat.lligString("Introduce el nombre: ");
         int bonusAtac = teclat.Teclat.lligInt("Introduce el bono de ataque: ");

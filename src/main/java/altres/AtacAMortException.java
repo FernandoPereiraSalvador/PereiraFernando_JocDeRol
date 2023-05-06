@@ -10,14 +10,20 @@ package altres;
  */
 public class AtacAMortException extends Exception {
 
-    // Constructor passant-li el text de l’error
+  
+    /**
+     * Constructor pasandole el texto del error
+     * @param msg El mensaje del error
+     */
     public AtacAMortException(String msg) {
         super(msg);
     }
-// Constructor sense passar-li el text de l’error
 
+    /**
+     * Constructor sin pasarle el texto del error
+     */
     public AtacAMortException() {
-        super("No es pot atacar a un mort");
+        super("No se puede atacar a un muerto");
     }
 
 }

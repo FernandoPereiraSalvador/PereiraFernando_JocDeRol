@@ -11,13 +11,19 @@ package altres;
 
 public class AtacEllMateixException extends Exception {
 
-    // Constructor passant-li el text de l’error
-    public AtacEllMateixException(String msg){
+    /**
+     * Constructor pasandole el mensaje de error.
+     * 
+     * @param msg El mensaje de error
+     */
+    public AtacEllMateixException(String msg) {
         super(msg);
     }
-// Constructor sense passar-li el text de l’error
 
-    public AtacEllMateixException(){
+    /**
+     * Constructor sin pasarle el mensaje de error
+     */
+    public AtacEllMateixException() {
         super("No es pot atacar a ell mateix");
     }
 
