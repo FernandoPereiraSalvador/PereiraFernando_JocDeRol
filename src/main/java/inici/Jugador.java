@@ -255,7 +255,7 @@ public class Jugador {
             System.out.println("guerrero");
         }
 
-        System.out.println(nom + " és colpejat amb " + quantitat + " punts i es defén amb " + puntsDefensa + ". Vides: "
+        System.out.println(nom + " és colpejat amb " + (quantitat+bonoAtaque) + " punts i es defén amb " + (puntsDefensa+bonoDefensa) + ". Vides: "
                 + videsAnteriors + " - " + ataque + "= " + vides);
 
     }
@@ -495,21 +495,52 @@ public class Jugador {
      * poderes del jugador.
      */
     public static void assignarPoder() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
+
+        if (!Poder.llista.isEmpty()) {
+            System.out.println("Poderes disponibles: ");
+            for (Poder poder : Poder.llista) {
+                System.out.println(poder.toString());
+            }
+        } else {
+            System.out.println("No hay poderes disponibles");
+            return;
+        }
+        
+        if(!llista.isEmpty()){
+            System.out.println("Jugadores disponibles: ");
+            for (Jugador jugador : llista) {
+                System.out.println(jugador.toString());
+            }
+        }else{
+            System.out.println("No hay jugadores disponibles");
+            return;
+        }
+
+        String nomJugador = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
         String poderNombre = teclat.Teclat.lligString("Introduce el nombre del poder: ");
 
-        try {
-            int indiceJugador = llista.indexOf(nom);
+        Jugador jugadorAsignar = null;
+        Poder poderAsignar = null;
 
-            Jugador jugador = llista.get(indiceJugador);
+        for (Jugador jugador : llista) {
+            if (jugador.getNom().equals(nomJugador)) {
+                jugadorAsignar = jugador;
+                break;
+            }
+        }
 
-            int indicePoder = Poder.llista.indexOf(poderNombre);
+        for (Poder poder : Poder.llista) {
+            if (poder.getNom().equals(poderNombre)) {
+                poderAsignar = poder;
+            }
+        }
 
-            Poder poder = Poder.llista.get(indicePoder);
+        if (jugadorAsignar != null && poderAsignar != null) {
+            jugadorAsignar.poders.add(poderAsignar);
+            System.out.println("Se ha asignado correctamente el poder " + poderAsignar.getNom() + " al jugador " + jugadorAsignar.getNom());
 
-            jugador.poders.add(poder);
-        } catch (IndexOutOfBoundsException e) {
-            System.out.println("El jugador o el poder no existen");
+        } else {
+            System.out.println("Error: El jugador no existe o no hay ningún poder");
         }
 
     }

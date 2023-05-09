@@ -76,19 +76,27 @@ public class PereiraFernando_JocDeRol {
      * azar hasta que sólo quede un superviviente.
      */
     public static void Automatizat() {
-        while (!Jugador.llista.isEmpty()) {
-            // crea un objeto Random
-            Random randJugador1 = new Random();
-            Random randJugador2 = new Random();
 
-            // genera un índice al azar dentro del rango de los índices del ArrayList
-            int randomIndexJugador1 = randJugador1.nextInt(Jugador.llista.size());
-            int randomIndexJugador2 = randJugador2.nextInt(Jugador.llista.size());
+        Jugador randomJugador1 = null;
+        Jugador randomJugador2 = null;
 
-            // obtiene el elemento correspondiente del ArrayList utilizando el índice
-            // generado al azar
-            Jugador randomJugador1 = Jugador.llista.get(randomIndexJugador1);
-            Jugador randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+        while (Jugador.llista.size()>1) {
+
+            while (randomJugador1 == randomJugador2) {
+                // crea un objeto Random
+                Random randJugador1 = new Random();
+                Random randJugador2 = new Random();
+
+                // genera un índice al azar dentro del rango de los índices del ArrayList
+                int randomIndexJugador1 = randJugador1.nextInt(Jugador.llista.size());
+                int randomIndexJugador2 = randJugador2.nextInt(Jugador.llista.size());
+
+                // obtiene el elemento correspondiente del ArrayList utilizando el índice
+                // generado al azar
+                randomJugador1 = Jugador.llista.get(randomIndexJugador1);
+                randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+            }
+
             try {
                 randomJugador1.ataca(randomJugador2);
             } catch (AtacAMortException | AtacEllMateixException e) {
