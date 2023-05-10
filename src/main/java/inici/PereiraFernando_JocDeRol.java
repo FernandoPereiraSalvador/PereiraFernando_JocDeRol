@@ -75,7 +75,7 @@ public class PereiraFernando_JocDeRol {
 
         Jugador randomJugador1 = null;
         Jugador randomJugador2 = null;
-        
+
         // Variables para detectar caso de empate
         Jugador anterior1 = null;
         Jugador anterior2 = null;
@@ -101,21 +101,21 @@ public class PereiraFernando_JocDeRol {
             // obtiene los jugadores correspondientes utilizando los índices generados
             randomJugador1 = Jugador.llista.get(randomIndexJugador1);
             randomJugador2 = Jugador.llista.get(randomIndexJugador2);
-            
+
             anterior1 = randomJugador1;
             anterior2 = randomJugador2;
-            
+
             try {
                 randomJugador1.ataca(randomJugador2);
             } catch (AtacAMortException | AtacEllMateixException e) {
                 System.out.println(e.getMessage());
             }
-            
-            if(anterior1.getVides()==randomJugador1.getVides() && anterior2.getVides()==randomJugador2.getVides()){
+
+            if (anterior1.getVides() == randomJugador1.getVides() && anterior2.getVides() == randomJugador2.getVides()) {
                 contadorEmpates++;
             }
-            
-            if(contadorEmpates==maxEmpates){
+
+            if (contadorEmpates == maxEmpates) {
                 System.out.println("Ha habido un empate");
                 System.out.println("Los jugadores que han ganado son: ");
                 for (Jugador jugador : Jugador.llista) {
@@ -137,6 +137,13 @@ public class PereiraFernando_JocDeRol {
      * Esta función simula un juego en el que cada jugador ataca a otro por turnos hasta que sólo queda un jugador.
      */
     public static void Manual() {
+
+        // Variables para detectar caso de empate
+        Jugador anterior1 = null;
+        Jugador anterior2 = null;
+        int contadorEmpates = 0;
+        int maxEmpates = 10;
+
         while (Jugador.llista.size() > 1) {
             try {
                 for (Jugador jugador : Jugador.llista) {
@@ -147,21 +154,40 @@ public class PereiraFernando_JocDeRol {
                     }
                     int jugadorAtacado = teclat.Teclat.lligInt("¿A que jugador deseas atacar?", 0,
                             Jugador.llista.size() - 1);
-
+                    anterior1 = jugador;
+                    anterior2 = Jugador.llista.get(jugadorAtacado);
                     try {
                         jugador.ataca(Jugador.llista.get(jugadorAtacado));
                     } catch (AtacAMortException | AtacEllMateixException e) {
                         System.out.println(e.getMessage());
                     }
+
+                    if (anterior1.getVides() == jugador.getVides() && anterior2.getVides() == Jugador.llista.get(jugadorAtacado).getVides()) {
+                        contadorEmpates++;
+                    }
+
+                    if (contadorEmpates == maxEmpates) {
+                        boolean continuar = teclat.Teclat.lligBoolean("Se ha detectado un posible caso de empate ¿Desea continuar?");
+                        if (continuar) {
+                            contadorEmpates = 0;
+                        } else {
+                            System.out.println("Ha habido un empate");
+                            System.out.println("Los jugadores que han ganado son: ");
+                            for (Jugador jugadorGanador : Jugador.llista) {
+                                System.out.println(jugadorGanador);
+                            }
+                            return;
+                        }
+                    }
                 }
             } catch (Exception e) {
-                
+
             }
         }
 
         if (!Jugador.llista.isEmpty()) {
             System.out.println("El ganador es: " + Jugador.llista.get(0));
-        }else{
+        } else {
             System.out.println("No ha habido supervivientes");
         }
     }
