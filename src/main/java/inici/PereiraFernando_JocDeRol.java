@@ -75,6 +75,10 @@ public class PereiraFernando_JocDeRol {
 
         Jugador randomJugador1 = null;
         Jugador randomJugador2 = null;
+        
+        Jugador anterior1 = null;
+        Jugador anterior2 = null;
+        int contadorEmpates = 0;
 
         while (Jugador.llista.size() > 1) {
 
@@ -95,10 +99,27 @@ public class PereiraFernando_JocDeRol {
             // obtiene los jugadores correspondientes utilizando los índices generados
             randomJugador1 = Jugador.llista.get(randomIndexJugador1);
             randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+            
+            anterior1 = randomJugador1;
+            anterior2 = randomJugador2;
+            
             try {
                 randomJugador1.ataca(randomJugador2);
             } catch (AtacAMortException | AtacEllMateixException e) {
                 System.out.println(e.getMessage());
+            }
+            
+            if(anterior1.getVides()==randomJugador1.getVides() && anterior2.getVides()==randomJugador2.getVides()){
+                contadorEmpates++;
+            }
+            
+            if(contadorEmpates==10){
+                System.out.println("Ha habido un empate");
+                System.out.println("Los jugadores que han ganado son: ");
+                for (Jugador jugador : Jugador.llista) {
+                    System.out.println(jugador.toString());
+                }
+                return;
             }
 
         }
