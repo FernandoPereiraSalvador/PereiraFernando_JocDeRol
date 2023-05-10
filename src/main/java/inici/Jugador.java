@@ -582,10 +582,9 @@ public class Jugador {
 
         if (equip != null && jugador != null) {
             equip.llevar(jugador);
-            System.out.println(" El jugador se ha eliminado del equipo correctamente");
+            System.out.println(" El jugador " + nom + " se ha eliminado del equipo " + nomEquip + " correctamente");
         } else {
             System.out.println("El jugador o el equipo no existen");
         }
     }
-
 }

@@ -23,7 +23,7 @@ public class AtacAMortException extends Exception {
      * Constructor sin pasarle el texto del error
      */
     public AtacAMortException() {
-        super("No se puede atacar a un muerto");
+        super("Un jugador muerto no puede atacar ni ser atacado");
     }
 
 }

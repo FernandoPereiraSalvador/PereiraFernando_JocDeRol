@@ -76,9 +76,11 @@ public class PereiraFernando_JocDeRol {
         Jugador randomJugador1 = null;
         Jugador randomJugador2 = null;
         
+        // Variables para detectar caso de empate
         Jugador anterior1 = null;
         Jugador anterior2 = null;
         int contadorEmpates = 0;
+        int maxEmpates = 10;
 
         while (Jugador.llista.size() > 1) {
 
@@ -113,7 +115,7 @@ public class PereiraFernando_JocDeRol {
                 contadorEmpates++;
             }
             
-            if(contadorEmpates==10){
+            if(contadorEmpates==maxEmpates){
                 System.out.println("Ha habido un empate");
                 System.out.println("Los jugadores que han ganado son: ");
                 for (Jugador jugador : Jugador.llista) {
@@ -153,12 +155,14 @@ public class PereiraFernando_JocDeRol {
                     }
                 }
             } catch (Exception e) {
-                System.out.println("No ha habido supervivientes");
+                
             }
         }
 
         if (!Jugador.llista.isEmpty()) {
             System.out.println("El ganador es: " + Jugador.llista.get(0));
+        }else{
+            System.out.println("No ha habido supervivientes");
         }
     }
 
