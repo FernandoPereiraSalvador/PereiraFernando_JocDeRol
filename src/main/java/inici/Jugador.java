@@ -171,7 +171,7 @@ public class Jugador {
      * @throws AtacEllMateixException Error si se ataca a si mismo
      */
     public void ataca(Jugador jugador) throws AtacAMortException, AtacEllMateixException {
-
+        
         if (this instanceof Alien) {
             ((Alien) this).enloquecer();
         }
@@ -179,6 +179,7 @@ public class Jugador {
         System.out.println("ABANS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
         System.out.println("Atacat: " + jugador.toString());
+        System.out.println("");
 
         System.out.println("ATAC");
 
@@ -205,8 +206,8 @@ public class Jugador {
             throw new AtacEllMateixException();
         }
 
-        jugador.esColpejatAmb(this.puntsAtac, BonoAtaqueThis, BonoDefensaThis);
-        this.esColpejatAmb(jugador.puntsAtac, BonoAtaqueJugador, BonoDefensaJugador);
+        jugador.esColpejatAmb(this.puntsAtac,this.puntsDefensa, BonoAtaqueThis, BonoDefensaThis);
+        this.esColpejatAmb(jugador.puntsAtac,this.puntsDefensa, BonoAtaqueJugador, BonoDefensaJugador);
 
         if (jugador.getVides() < 0) {
             jugador.setVides(0);
@@ -215,6 +216,8 @@ public class Jugador {
         if (this.getVides() < 0) {
             this.setVides(0);
         }
+        
+        System.out.println("");
 
         System.out.println("DESPRÉS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
@@ -226,7 +229,7 @@ public class Jugador {
         if (this.getVides() <= 0) {
             llista.remove(this);
         }
-
+        System.out.println("---");
     }
 
     /**
@@ -234,7 +237,8 @@ public class Jugador {
      * ataque y defensa, y
      * actualiza sus puntos de salud restantes en consecuencia.
      *
-     * @param quantitat   Cantidad de daño infligido al personaje atacado.
+     * @param quantitat   Cantidad de daño infligido al personaje ataca
+     * @param defensa     Cantidad de defensa con la que se defiende.
      * @param bonoAtaque  Valor añadido a los puntos de ataque del personaje.
      * @param bonoDefensa El parámetro "bonoDefensa" es un valor entero que
      *                    representa una bonificación a los
@@ -243,9 +247,9 @@ public class Jugador {
      *                    de defensa utilizados en el cálculo del ataque.
      *                    puntos de defensa utilizados en el cálculo del ataque.
      */
-    protected void esColpejatAmb(int quantitat, int bonoAtaque, int bonoDefensa) {
+    protected void esColpejatAmb(int quantitat,int defensa, int bonoAtaque, int bonoDefensa) {
 
-        int ataque = (quantitat + bonoAtaque) - (puntsDefensa + bonoDefensa);
+        int ataque = Math.max((quantitat + bonoAtaque) - (defensa + bonoDefensa), 0);
         int videsAnteriors = this.getVides();
         if (ataque > 0 && !(this instanceof Guerrer)) {
             this.setVides(this.getVides() - ataque);
@@ -255,7 +259,7 @@ public class Jugador {
             System.out.println("guerrero");
         }
 
-        System.out.println(nom + " és colpejat amb " + (quantitat+bonoAtaque) + " punts i es defén amb " + (puntsDefensa+bonoDefensa) + ". Vides: "
+        System.out.println(nom + " és colpejat amb " + (quantitat+bonoAtaque) + " punts i es defén amb " + (defensa+bonoDefensa) + ". Vides: "
                 + videsAnteriors + " - " + ataque + "= " + vides);
 
     }
@@ -483,7 +487,7 @@ public class Jugador {
 
         if (equip != null && jugador != null) {
             equip.posa(jugador);
-            System.out.println("El jugador se ha asignado al equipo correctamente");
+            System.out.println("El jugador " + nom +  " se ha asignado al equipo " + nomEquip + " correctamente");
         } else {
             System.out.println("El jugador o el equipo no existen");
         }

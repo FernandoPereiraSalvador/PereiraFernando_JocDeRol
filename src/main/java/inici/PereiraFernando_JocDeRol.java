@@ -16,9 +16,7 @@ import java.util.Random;
 public class PereiraFernando_JocDeRol {
 
     /**
-     * Esta función muestra un menú para configurar jugadores, equipos y potencias,
-     * y permite al usuario seleccionar una opción para realizar la acción
-     * correspondiente.
+     * Esta función muestra un menú para configurar jugadores, equipos y potencias, y permite al usuario seleccionar una opción para realizar la acción correspondiente.
      */
     public static void menuConfiguracio() {
         int opcionMenu = -1;
@@ -47,8 +45,7 @@ public class PereiraFernando_JocDeRol {
     }
 
     /**
-     * La función "jugar" muestra un menú con dos opciones (automatizada y manual) y
-     * permite al usuario elegir entre ellas.
+     * La función "jugar" muestra un menú con dos opciones (automatizada y manual) y permite al usuario elegir entre ellas.
      */
     public static void jugar() {
 
@@ -72,31 +69,32 @@ public class PereiraFernando_JocDeRol {
     }
 
     /**
-     * Esta función automatiza el proceso de ataque entre jugadores seleccionados al
-     * azar hasta que sólo quede un superviviente.
+     * Esta función automatiza el proceso de ataque entre jugadores seleccionados al azar hasta que sólo quede un superviviente.
      */
     public static void Automatizat() {
 
         Jugador randomJugador1 = null;
         Jugador randomJugador2 = null;
 
-        while (Jugador.llista.size()>1) {
+        while (Jugador.llista.size() > 1) {
 
-            while (randomJugador1 == randomJugador2) {
-                // crea un objeto Random
-                Random randJugador1 = new Random();
-                Random randJugador2 = new Random();
+            // crea un objeto Random
+            Random rand = new Random();
 
-                // genera un índice al azar dentro del rango de los índices del ArrayList
-                int randomIndexJugador1 = randJugador1.nextInt(Jugador.llista.size());
-                int randomIndexJugador2 = randJugador2.nextInt(Jugador.llista.size());
+            // genera un índice al azar dentro del rango de los índices del ArrayList
+            int randomIndexJugador1 = rand.nextInt(Jugador.llista.size());
 
-                // obtiene el elemento correspondiente del ArrayList utilizando el índice
-                // generado al azar
-                randomJugador1 = Jugador.llista.get(randomIndexJugador1);
-                randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+            // inicializa el segundo índice como el índice del primer jugador
+            int randomIndexJugador2 = randomIndexJugador1;
+
+            // mientras los índices sean iguales, genera nuevos índices
+            while (randomIndexJugador2 == randomIndexJugador1) {
+                randomIndexJugador2 = rand.nextInt(Jugador.llista.size());
             }
 
+            // obtiene los jugadores correspondientes utilizando los índices generados
+            randomJugador1 = Jugador.llista.get(randomIndexJugador1);
+            randomJugador2 = Jugador.llista.get(randomIndexJugador2);
             try {
                 randomJugador1.ataca(randomJugador2);
             } catch (AtacAMortException | AtacEllMateixException e) {
@@ -113,11 +111,10 @@ public class PereiraFernando_JocDeRol {
     }
 
     /**
-     * Esta función simula un juego en el que cada jugador ataca a otro por turnos
-     * hasta que sólo queda un jugador.
+     * Esta función simula un juego en el que cada jugador ataca a otro por turnos hasta que sólo queda un jugador.
      */
     public static void Manual() {
-        while (Jugador.llista.size()>1) {
+        while (Jugador.llista.size() > 1) {
             try {
                 for (Jugador jugador : Jugador.llista) {
                     System.out.println("\nTurno de " + jugador.getNom() + "\n");
@@ -138,15 +135,14 @@ public class PereiraFernando_JocDeRol {
                 System.out.println("No ha habido supervivientes");
             }
         }
-        
-        if(!Jugador.llista.isEmpty()){
+
+        if (!Jugador.llista.isEmpty()) {
             System.out.println("El ganador es: " + Jugador.llista.get(0));
         }
     }
 
     /**
-     * Esta función imprime un título de menú con una línea de signos iguales por
-     * encima y por debajo, centrado dentro de una línea de 40 caracteres.
+     * Esta función imprime un título de menú con una línea de signos iguales por encima y por debajo, centrado dentro de una línea de 40 caracteres.
      *
      * @param title El título del menú que se imprimirá.
      */
@@ -160,14 +156,14 @@ public class PereiraFernando_JocDeRol {
     }
 
     /**
-     * Esta función muestra un menú para un juego de rol y permite al usuario
-     * seleccionar opciones como configuración o jugar al juego.
-     * 
+     * Esta función muestra un menú para el juego de rol y permite al usuario seleccionar opciones como configuración o jugar al juego.
+     *
      * @param args
      */
     public static void main(String[] args) {
 
         int opcion = -1;
+        boolean salir = false;
 
         while (opcion != 0) {
             printMenuTitle("JOC DE ROL");
@@ -177,12 +173,23 @@ public class PereiraFernando_JocDeRol {
 
             opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
 
-            if (opcion == 1) {
-                menuConfiguracio();
-                opcion = -1;
-            } else if (opcion == 2) {
-                jugar();
-                opcion = -1;
+            switch (opcion) {
+                case 1 -> {
+                    menuConfiguracio();
+                    opcion = -1;
+                }
+                case 2 -> {
+                    jugar();
+                    opcion = -1;
+                }
+                case 0 -> {
+                    salir = teclat.Teclat.lligBoolean("¿Seguro que desea salir?");
+                    if (!salir) {
+                        opcion = -1;
+                    }
+                }
+                default -> {
+                }
             }
         }
     }
