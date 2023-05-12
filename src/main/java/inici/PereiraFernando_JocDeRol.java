@@ -4,10 +4,12 @@
  */
 package inici;
 
+import personatges.Jugador;
 import altres.Equip;
 import altres.Poder;
 import altres.*;
 import java.util.Random;
+import static Teclat.Pantalla.*;
 
 /**
  *
@@ -32,11 +34,11 @@ public class PereiraFernando_JocDeRol {
 
             switch (opcionMenu) {
                 case 1 ->
-                    Jugador.menu();
+                    Jugadors.menu();
                 case 2 ->
-                    Equip.menu();
+                    Equips.menu();
                 case 3 ->
-                    Poder.menu();
+                    Poders.menu();
                 default ->
                     System.out.println("Has introducido una opción erronea");
             }
@@ -82,25 +84,25 @@ public class PereiraFernando_JocDeRol {
         int contadorEmpates = 0;
         int maxEmpates = 10;
 
-        while (Jugador.llista.size() > 1) {
+        while (Jugadors.llista.size() > 1) {
 
             // crea un objeto Random
             Random rand = new Random();
 
             // genera un índice al azar dentro del rango de los índices del ArrayList
-            int randomIndexJugador1 = rand.nextInt(Jugador.llista.size());
+            int randomIndexJugador1 = rand.nextInt(Jugadors.llista.size());
 
             // inicializa el segundo índice como el índice del primer jugador
             int randomIndexJugador2 = randomIndexJugador1;
 
             // mientras los índices sean iguales, genera nuevos índices
             while (randomIndexJugador2 == randomIndexJugador1) {
-                randomIndexJugador2 = rand.nextInt(Jugador.llista.size());
+                randomIndexJugador2 = rand.nextInt(Jugadors.llista.size());
             }
 
             // obtiene los jugadores correspondientes utilizando los índices generados
-            randomJugador1 = Jugador.llista.get(randomIndexJugador1);
-            randomJugador2 = Jugador.llista.get(randomIndexJugador2);
+            randomJugador1 = Jugadors.llista.get(randomIndexJugador1);
+            randomJugador2 = Jugadors.llista.get(randomIndexJugador2);
 
             anterior1 = randomJugador1;
             anterior2 = randomJugador2;
@@ -118,7 +120,7 @@ public class PereiraFernando_JocDeRol {
             if (contadorEmpates == maxEmpates) {
                 System.out.println("Ha habido un empate");
                 System.out.println("Los jugadores que han ganado son: ");
-                for (Jugador jugador : Jugador.llista) {
+                for (Jugador jugador : Jugadors.llista) {
                     System.out.println(jugador.toString());
                 }
                 return;
@@ -126,7 +128,7 @@ public class PereiraFernando_JocDeRol {
 
         }
         try {
-            System.out.println("El ganador es: " + Jugador.llista.get(0));
+            System.out.println("El ganador es: " + Jugadors.llista.get(0));
         } catch (Exception e) {
             System.out.println("No han habido supervivientes");
         }
@@ -144,25 +146,25 @@ public class PereiraFernando_JocDeRol {
         int contadorEmpates = 0;
         int maxEmpates = 10;
 
-        while (Jugador.llista.size() > 1) {
+        while (Jugadors.llista.size() > 1) {
             try {
-                for (Jugador jugador : Jugador.llista) {
+                for (Jugador jugador : Jugadors.llista) {
                     System.out.println("\nTurno de " + jugador.getNom() + "\n");
                     System.out.println("Jugadores disponibles:");
-                    for (Jugador j : Jugador.llista) {
+                    for (Jugador j : Jugadors.llista) {
                         System.out.println(j);
                     }
                     int jugadorAtacado = teclat.Teclat.lligInt("¿A que jugador deseas atacar?", 0,
-                            Jugador.llista.size() - 1);
+                            Jugadors.llista.size() - 1);
                     anterior1 = jugador;
-                    anterior2 = Jugador.llista.get(jugadorAtacado);
+                    anterior2 = Jugadors.llista.get(jugadorAtacado);
                     try {
-                        jugador.ataca(Jugador.llista.get(jugadorAtacado));
+                        jugador.ataca(Jugadors.llista.get(jugadorAtacado));
                     } catch (AtacAMortException | AtacEllMateixException e) {
                         System.out.println(e.getMessage());
                     }
 
-                    if (anterior1.getVides() == jugador.getVides() && anterior2.getVides() == Jugador.llista.get(jugadorAtacado).getVides()) {
+                    if (anterior1.getVides() == jugador.getVides() && anterior2.getVides() == Jugadors.llista.get(jugadorAtacado).getVides()) {
                         contadorEmpates++;
                     }
 
@@ -173,7 +175,7 @@ public class PereiraFernando_JocDeRol {
                         } else {
                             System.out.println("Ha habido un empate");
                             System.out.println("Los jugadores que han ganado son: ");
-                            for (Jugador jugadorGanador : Jugador.llista) {
+                            for (Jugador jugadorGanador : Jugadors.llista) {
                                 System.out.println(jugadorGanador);
                             }
                             return;
@@ -181,29 +183,14 @@ public class PereiraFernando_JocDeRol {
                     }
                 }
             } catch (Exception e) {
-
             }
         }
 
-        if (!Jugador.llista.isEmpty()) {
-            System.out.println("El ganador es: " + Jugador.llista.get(0));
+        if (!Jugadors.llista.isEmpty()) {
+            System.out.println("El ganador es: " + Jugadors.llista.get(0));
         } else {
             System.out.println("No ha habido supervivientes");
         }
-    }
-
-    /**
-     * Esta función imprime un título de menú con una línea de signos iguales por encima y por debajo, centrado dentro de una línea de 40 caracteres.
-     *
-     * @param title El título del menú que se imprimirá.
-     */
-    public static void printMenuTitle(String title) {
-        int titleLength = title.length();
-        int lineLength = 40;
-        int spaces = (lineLength - titleLength) / 2;
-        System.out.println("\n" + "=".repeat(lineLength));
-        System.out.println(" ".repeat(spaces) + title);
-        System.out.println("=".repeat(lineLength) + "\n");
     }
 
     /**

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package inici;
+package personatges;
 
 /**
  * La clase "Huma" amplía la clase "Jugador" y fija el número máximo de vidas en

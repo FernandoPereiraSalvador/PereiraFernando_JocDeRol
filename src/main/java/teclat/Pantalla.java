@@ -8,8 +8,21 @@ public class Pantalla {
     // ======== FUNCIONS PER A L'EIXIDA DE DADES PER PANTALLA ==========
 
     /**
-     * Mostra el text passat com a paràmetre en un format especial. Li posa un
-     * Quadradet al voltant, segons la grandària del text.
+     * Esta función imprime un título de menú con una línea de signos iguales por encima y por debajo, centrado dentro de una línea de 40 caracteres.
+     *
+     * @param title El título del menú que se imprimirá.
+     */
+    public static void printMenuTitle(String title) {
+        int titleLength = title.length();
+        int lineLength = 40;
+        int spaces = (lineLength - titleLength) / 2;
+        System.out.println("\n" + "=".repeat(lineLength));
+        System.out.println(" ".repeat(spaces) + title);
+        System.out.println("=".repeat(lineLength) + "\n");
+    }
+
+    /**
+     * Mostra el text passat com a paràmetre en un format especial. Li posa un Quadradet al voltant, segons la grandària del text.
      *
      * @param text Text del títol
      * @param espais Espais a l'esquerra del títol
@@ -32,8 +45,7 @@ public class Pantalla {
     }
 
     /**
-     * Mostra el text passat com a paràmetre en un format especial. Li posa un
-     * Quadradet al voltant, segons la grandària del text.
+     * Mostra el text passat com a paràmetre en un format especial. Li posa un Quadradet al voltant, segons la grandària del text.
      *
      * @param text Text del títol
      */
@@ -42,9 +54,7 @@ public class Pantalla {
     }
 
     /**
-     * Mostra el text passat com a paràmetre en un format especial i un poc
-     * centrat en la pantalla. Li posa un Quadradet al voltant, segons la
-     * grandària del text.
+     * Mostra el text passat com a paràmetre en un format especial i un poc centrat en la pantalla. Li posa un Quadradet al voltant, segons la grandària del text.
      *
      * @param text Text del títol
      */
@@ -72,8 +82,7 @@ public class Pantalla {
     }
 
     /**
-     * Retorna una línia de ratlletes de la grandària especificada. És invocada
-     * (entre altres) pel toString de la classe Serie.
+     * Retorna una línia de ratlletes de la grandària especificada. És invocada (entre altres) pel toString de la classe Serie.
      *
      * @param n Grandària de la línia (en quantitat de caràcters)
      * @return la línia de ratlletes.
@@ -87,8 +96,7 @@ public class Pantalla {
     }
 
     /**
-     * Retorna un text que càpiga en un tros, alineat a esquerra. Pensat per a
-     * ser usat en el toString.
+     * Retorna un text que càpiga en un tros, alineat a esquerra. Pensat per a ser usat en el toString.
      *
      * @param text Text del qual volem obtindre un tros
      * @param espais Quantitat d'espais que ha d'ocupar el text
@@ -109,8 +117,7 @@ public class Pantalla {
     }
 
     /**
-     * Retorna un número que càpiga en un tros, alineat a dreta. Pensat per a
-     * ser usat en el toString
+     * Retorna un número que càpiga en un tros, alineat a dreta. Pensat per a ser usat en el toString
      *
      * @param numero Número del qual volem posar en un tros
      * @param espais Quantitat d'espais que ha d'ocupar el número
@@ -170,7 +177,7 @@ public class Pantalla {
             System.out.print(v[v.length-1]);
         }
         System.out.println("]");
-        */
+         */
     }
 
 }
