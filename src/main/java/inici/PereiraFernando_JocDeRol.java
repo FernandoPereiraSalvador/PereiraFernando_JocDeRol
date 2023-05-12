@@ -67,11 +67,29 @@ public class PereiraFernando_JocDeRol {
                 System.out.println("Opcion incorrecta");
         }
     }
+    /**
+     * Comprueba que haya suficientes jugadores para jugar una partida.
+     * @return Un true si no se puede jugar y false en caso contrario
+     */
+    public static boolean NoSePuedeJugar() {
+        if (Jugadors.llista.size() == 1) {
+            System.out.println("Se necesitan mínimo 2 jugadores");
+            return true;
+        } else if (Jugadors.llista.isEmpty()) {
+            System.out.println("No hay jugadores");
+            return true;
+        }
+        return false;
+    }
 
     /**
      * Esta función automatiza el proceso de ataque entre jugadores seleccionados al azar hasta que sólo quede un superviviente.
      */
     public static void Automatizat() {
+
+        if (NoSePuedeJugar()) {
+            return;
+        }
 
         Jugador randomJugador1 = null;
         Jugador randomJugador2 = null;
@@ -137,6 +155,10 @@ public class PereiraFernando_JocDeRol {
      * Esta función simula un juego en el que cada jugador ataca a otro por turnos hasta que sólo queda un jugador.
      */
     public static void Manual() {
+
+        if (NoSePuedeJugar()) {
+            return;
+        }
 
         // Variables para detectar caso de empate
         Jugador anterior1 = null;
