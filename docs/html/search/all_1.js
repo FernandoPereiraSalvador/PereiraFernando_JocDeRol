@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['consultar_0',['consultar',['../classaltres_1_1_equip.html#a0cf6f1c06c8c48ca17652d5aef312f1f',1,'altres.Equip.consultar()'],['../classaltres_1_1_poder.html#a19d3068129838ec87771b9414e1c1ce3',1,'altres.Poder.consultar()'],['../classinici_1_1_jugador.html#a2a1b1b967519983638462e7455d696f5',1,'inici.Jugador.consultar()']]],
-  ['crear_1',['crear',['../classaltres_1_1_equip.html#aaf7f2cbc108055ad2ab772f95588e819',1,'altres.Equip.crear()'],['../classaltres_1_1_poder.html#abe9385f99f98abb947e4df716e83e7ea',1,'altres.Poder.crear()'],['../classinici_1_1_jugador.html#acadb254bd4291bc333b285ef3e45afb4',1,'inici.Jugador.crear()']]]
+  ['consultar_0',['consultar',['../classinici_1_1_equips.html#a3245e7c3fc54b067cf79058573ddadc9',1,'inici.Equips.consultar()'],['../classinici_1_1_jugadors.html#af99bd8d6bce3d8992f47df2a62012fd0',1,'inici.Jugadors.consultar()'],['../classinici_1_1_poders.html#a2816aec84559d7a6a29573ac4784c1be',1,'inici.Poders.consultar()']]],
+  ['crear_1',['crear',['../classinici_1_1_equips.html#a273e54d594230ffc6b86ac270a509932',1,'inici.Equips.crear()'],['../classinici_1_1_jugadors.html#ad52934fc81b19c5dde33ac9ce84744d9',1,'inici.Jugadors.crear()'],['../classinici_1_1_poders.html#a5a42012ac5c9ef26e7758913f197e6d0',1,'inici.Poders.crear()']]]
 ];

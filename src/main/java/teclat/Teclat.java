@@ -1,6 +1,6 @@
 package teclat;
 
-import static Teclat.Pantalla.*;
+import static teclat.Pantalla.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 

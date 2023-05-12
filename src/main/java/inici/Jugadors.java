@@ -11,7 +11,7 @@ import personatges.Alien;
 import personatges.Guerrer;
 import personatges.Huma;
 import personatges.Jugador;
-import static Teclat.Pantalla.*;
+import static teclat.Pantalla.*;
 
 /**
  *

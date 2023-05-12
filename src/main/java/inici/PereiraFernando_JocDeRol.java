@@ -5,11 +5,9 @@
 package inici;
 
 import personatges.Jugador;
-import altres.Equip;
-import altres.Poder;
 import altres.*;
 import java.util.Random;
-import static Teclat.Pantalla.*;
+import static teclat.Pantalla.*;
 
 /**
  *

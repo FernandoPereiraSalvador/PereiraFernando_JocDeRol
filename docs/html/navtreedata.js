@@ -25,7 +25,7 @@
 var NAVTREE =
 [
   [ "Juego de rol", "index.html", [
-    [ "PereiraFernando_JocDeRol", "md__r_e_a_d_m_e.html", null ],
+    [ "PereiraFernando_JocDeRol", "md__c___users__t_e_s_t_e_r__one_drive__documentos__pereira_fernando__joc_de_rol__r_e_a_d_m_e.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],

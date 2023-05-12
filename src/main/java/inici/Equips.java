@@ -6,7 +6,7 @@ package inici;
 
 import altres.Equip;
 import java.util.ArrayList;
-import static Teclat.Pantalla.*;
+import static teclat.Pantalla.*;
 /**
  *
  * @author Fernando
