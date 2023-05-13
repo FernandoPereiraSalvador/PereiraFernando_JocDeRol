@@ -4,9 +4,6 @@
  */
 package personatges;
 
-import personatges.Huma;
-import personatges.Guerrer;
-import personatges.Alien;
 import altres.*;
 import java.util.ArrayList;
 import inici.Jugadors;
@@ -24,7 +21,7 @@ public class Jugador {
     private Equip equip;
     static int cantidadVidas = 200;
 
-    private ArrayList<Poder> poders = new ArrayList<Poder>();
+    private ArrayList<Poder> poders = new ArrayList<>();
 
     /**
      * El constructor del Jugador
@@ -172,31 +169,12 @@ public class Jugador {
      */
     public void ataca(Jugador jugador) throws AtacAMortException, AtacEllMateixException {
 
-        if (this instanceof Alien) {
-            ((Alien) this).enloquecer();
-        }
-
         System.out.println("ABANS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
         System.out.println("Atacat: " + jugador.toString());
         System.out.println("");
 
         System.out.println("ATAC");
-
-        int BonoAtaqueThis = 0;
-        int BonoAtaqueJugador = 0;
-        int BonoDefensaThis = 0;
-        int BonoDefensaJugador = 0;
-
-        for (Poder poder : this.poders) {
-            BonoAtaqueThis += poder.getBonusAtac();
-            BonoDefensaThis += poder.getBonusDefensa();
-        }
-
-        for (Poder poder : jugador.poders) {
-            BonoAtaqueJugador += poder.getBonusAtac();
-            BonoDefensaJugador += poder.getBonusDefensa();
-        }
 
         if (this.getVides() <= 0 || jugador.getVides() <= 0) {
             throw new AtacAMortException();
@@ -206,8 +184,8 @@ public class Jugador {
             throw new AtacEllMateixException();
         }
 
-        jugador.esColpejatAmb(this.puntsAtac, this.puntsDefensa, BonoAtaqueThis, BonoDefensaThis);
-        this.esColpejatAmb(jugador.puntsAtac, this.puntsDefensa, BonoAtaqueJugador, BonoDefensaJugador);
+        jugador.esColpejatAmb(this.puntsAtac);
+        this.esColpejatAmb(jugador.puntsAtac);
 
         if (jugador.getVides() < 0) {
             jugador.setVides(0);
@@ -235,20 +213,25 @@ public class Jugador {
     /**
      * La función calcula el daño recibido por un personaje basado en los puntos de ataque y defensa, y actualiza sus puntos de salud restantes en consecuencia.
      *
-     * @param quantitat Cantidad de daño infligido al personaje ataca
-     * @param defensa Cantidad de defensa con la que se defiende.
-     * @param bonoAtaque Valor añadido a los puntos de ataque del personaje.
-     * @param bonoDefensa El parámetro "bonoDefensa" es un valor entero que representa una bonificación a los puntos de defensa del defensor. Se añade a los puntos de defensa base del defensor para calcular el total de puntos de defensa utilizados en el cálculo del ataque. puntos de defensa utilizados en el cálculo del ataque.
+     * @param daño Cantidad de daño infligido al personaje ataca
+     * 
      */
-    protected void esColpejatAmb(int quantitat, int defensa, int bonoAtaque, int bonoDefensa) {
-        int ataque = Math.max((quantitat + bonoAtaque) - (defensa + bonoDefensa), 0);
+    protected void esColpejatAmb(int daño) {
+        int BonoAtaque = 0;
+        int BonoDefensa = 0;
+        for (Poder poder : this.poders) {
+            BonoAtaque += poder.getBonusAtac();
+            BonoDefensa += poder.getBonusDefensa();
+        }
+
+        int ataque = Math.max((daño + BonoAtaque) - (this.getPuntsDefensa() + BonoDefensa), 0);
         int videsAnteriors = this.getVides();
 
         if (ataque > 0) {
             this.setVides(this.getVides() - ataque);
         }
 
-        System.out.println(nom + " és colpejat amb " + (quantitat + bonoAtaque) + " punts i es defén amb " + (defensa + bonoDefensa) + ". Vides: "
+        System.out.println(nom + " és colpejat amb " + (daño + BonoAtaque) + " punts i es defén amb " + (this.getPuntsDefensa() + BonoDefensa) + ". Vides: "
                 + videsAnteriors + " - " + ataque + "= " + vides);
     }
 
@@ -261,7 +244,16 @@ public class Jugador {
     public String toString() {
         String nomClasse = this.getClass().getName();
         nomClasse = nomClasse.substring(nomClasse.lastIndexOf(".") + 1);
-        return nom + "(" + nomClasse + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")";
+        String poderes = "";
+
+        if(!this.poders.isEmpty()){
+            poderes = "Poderes: ";
+            for (Poder poder : poders) {
+                poderes += poder.getNom() + " ";
+            }
+        }
+        
+        return nom + "(" + nomClasse + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")" + poderes;
     }
 
     /**
@@ -287,9 +279,11 @@ public class Jugador {
      * @param poder El parámetro "poder" es un objeto de la clase "Poder". Se pasa como al método "posa".
      */
     public void posa(Poder poder) {
-
-        if (!this.poders.contains(poder)) {
-            this.poders.add(poder);
+        boolean añadido = this.poders.add(poder);
+        if(añadido){
+            System.out.println("El poder " + poder.getNom() + " se ha añadido correctamente");
+        }else{
+            System.out.println("Error");
         }
     }
 
@@ -299,8 +293,11 @@ public class Jugador {
      * @param poder poder es un objeto de la clase Poder, que se pasa como parámetro al método método llevar.
      */
     public void lleva(Poder poder) {
-        if (this.poders.contains(poder)) {
-            this.poders.remove(poder);
+        boolean eliminado = this.poders.remove(poder);
+        if(eliminado){
+            System.out.println("El poder " + poder.getNom() + " se ha eliminado correctamente");
+        }else{
+            System.out.println("Error");
         }
     }
 

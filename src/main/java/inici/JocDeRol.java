@@ -8,12 +8,13 @@ import personatges.Jugador;
 import altres.*;
 import java.util.Random;
 import static teclat.Pantalla.*;
+import teclat.Teclat;
 
 /**
  *
  * @author Fernando
  */
-public class PereiraFernando_JocDeRol {
+public class JocDeRol {
 
     /**
      * Esta función muestra un menú para configurar jugadores, equipos y potencias, y permite al usuario seleccionar una opción para realizar la acción correspondiente.
@@ -28,7 +29,7 @@ public class PereiraFernando_JocDeRol {
             System.out.println("3.Poders");
             System.out.println("0.Eixir");
 
-            opcionMenu = teclat.Teclat.lligInt("Introduce la opcion: ");
+            opcionMenu = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcionMenu) {
                 case 1 ->
@@ -56,7 +57,7 @@ public class PereiraFernando_JocDeRol {
         System.out.println("2.Manual");
         System.out.println("0.Eixir");
 
-        opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+        opcion = Teclat.lligInt("Introduce la opcion: ");
 
         switch (opcion) {
             case 1 ->
@@ -176,7 +177,7 @@ public class PereiraFernando_JocDeRol {
                     for (Jugador j : Jugadors.llista) {
                         System.out.println(j);
                     }
-                    int jugadorAtacado = teclat.Teclat.lligInt("¿A que jugador deseas atacar?", 0,
+                    int jugadorAtacado = Teclat.lligInt("¿A que jugador deseas atacar?", 0,
                             Jugadors.llista.size() - 1);
                     anterior1 = jugador;
                     anterior2 = Jugadors.llista.get(jugadorAtacado);
@@ -196,7 +197,7 @@ public class PereiraFernando_JocDeRol {
                     }
 
                     if (contadorEmpates == maxEmpates) {
-                        boolean continuar = teclat.Teclat.lligBoolean("Se ha detectado un posible caso de empate ¿Desea continuar?");
+                        boolean continuar = Teclat.lligBoolean("Se ha detectado un posible caso de empate ¿Desea continuar?");
                         if (continuar) {
                             contadorEmpates = 0;
                         } else {
@@ -236,7 +237,7 @@ public class PereiraFernando_JocDeRol {
             System.out.println("2.Jugar");
             System.out.println("0.Eixir");
 
-            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            opcion = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcion) {
                 case 1 -> {
@@ -248,7 +249,7 @@ public class PereiraFernando_JocDeRol {
                     opcion = -1;
                 }
                 case 0 -> {
-                    salir = teclat.Teclat.lligBoolean("¿Seguro que desea salir?");
+                    salir = Teclat.lligBoolean("¿Seguro que desea salir?");
                     if (!salir) {
                         opcion = -1;
                     }

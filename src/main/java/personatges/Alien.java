@@ -4,6 +4,11 @@
  */
 package personatges;
 
+import altres.AtacAMortException;
+import altres.AtacEllMateixException;
+import altres.Poder;
+import inici.Jugadors;
+
 /**
  *
  * @author Fernando
@@ -43,5 +48,65 @@ public class Alien extends Jugador {
             this.setPuntsDefensa(this.getPuntsDefensa() + 3);
             enloquecido = false;
         }
+    }
+    
+        public void ataca(Jugador jugador) throws AtacAMortException, AtacEllMateixException {
+
+        enloquecer();
+                
+        System.out.println("ABANS DE L'ATAC");
+        System.out.println("Atacant: " + this.toString());
+        System.out.println("Atacat: " + jugador.toString());
+        System.out.println("");
+
+        System.out.println("ATAC");
+
+        int BonoAtaqueThis = 0;
+        int BonoAtaqueJugador = 0;
+        int BonoDefensaThis = 0;
+        int BonoDefensaJugador = 0;
+
+        for (Poder poder : this.getPoders()) {
+            BonoAtaqueThis += poder.getBonusAtac();
+            BonoDefensaThis += poder.getBonusDefensa();
+        }
+
+        for (Poder poder : jugador.getPoders()) {
+            BonoAtaqueJugador += poder.getBonusAtac();
+            BonoDefensaJugador += poder.getBonusDefensa();
+        }
+
+        if (this.getVides() <= 0 || jugador.getVides() <= 0) {
+            throw new AtacAMortException();
+        }
+
+        if (this.getNom().equals(jugador.getNom())) {
+            throw new AtacEllMateixException();
+        }
+
+        jugador.esColpejatAmb(this.getPuntsAtac());
+        this.esColpejatAmb(jugador.getPuntsAtac());
+
+        if (jugador.getVides() < 0) {
+            jugador.setVides(0);
+        }
+
+        if (this.getVides() < 0) {
+            this.setVides(0);
+        }
+
+        System.out.println("");
+
+        System.out.println("DESPRÉS DE L'ATAC");
+        System.out.println("Atacant: " + this.toString());
+        System.out.println("Atacat: " + jugador.toString());
+        if (jugador.getVides() <= 0) {
+            Jugadors.matar(jugador);
+        }
+
+        if (this.getVides() <= 0) {
+            Jugadors.matar(this);
+        }
+        System.out.println("---");
     }
 }

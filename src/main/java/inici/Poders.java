@@ -7,6 +7,8 @@ package inici;
 import altres.Poder;
 import java.util.ArrayList;
 import static teclat.Pantalla.*;
+import teclat.Teclat;
+
 /**
  *
  * @author Fernando
@@ -28,7 +30,7 @@ public class Poders {
             System.out.println("3.Eliminar");
             System.out.println("0.Eixir");
 
-            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            opcion = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcion) {
                 case 1 ->
@@ -47,9 +49,9 @@ public class Poders {
      * Esta función Java crea un nuevo objeto "Poder" con el nombre, bono de ataque y bono de defensa introducidos por el usuario. , y lo añade a una lista si no existe ya.
      */
     public static void crear() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
-        int bonusAtac = teclat.Teclat.lligInt("Introduce el bono de ataque: ");
-        int bonusDefensa = teclat.Teclat.lligInt("Introduce el bono de defensa: ");
+        String nom = Teclat.lligString("Introduce el nombre: ");
+        int bonusAtac = Teclat.lligInt("Introduce el bono de ataque: ");
+        int bonusDefensa = Teclat.lligInt("Introduce el bono de defensa: ");
 
         Poder nuevoPoder = new Poder(nom, bonusAtac, bonusDefensa);
 
@@ -79,16 +81,25 @@ public class Poders {
      * Esta función Java elimina una potencia de una lista si existe, basándose en los datos introducidos por el usuario para la potencia.
      */
     public static void eliminar() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
-        int bonusAtac = teclat.Teclat.lligInt("Introduce el bono de ataque: ");
-        int bonusDefensa = teclat.Teclat.lligInt("Introduce el bono de defensa: ");
+        String nom = Teclat.lligString("Introduce el nombre: ");
+        int bonusAtac = Teclat.lligInt("Introduce el bono de ataque: ");
+        int bonusDefensa = Teclat.lligInt("Introduce el bono de defensa: ");
 
-        Poder nuevoPoder = new Poder(nom, bonusAtac, bonusDefensa);
+        // Buscar el poder en la lista
+        Poder poderAEliminar = null;
+        for (Poder poder : llista) {
+            if (poder.getNom().equals(nom) && poder.getBonusAtac() == bonusAtac && poder.getBonusDefensa() == bonusDefensa) {
+                poderAEliminar = poder;
+                break;
+            }
+        }
 
-        if (!llista.contains(nuevoPoder)) {
-            llista.remove(nuevoPoder);
+        // Eliminar el poder si se encontró
+        if (poderAEliminar != null) {
+            llista.remove(poderAEliminar);
+            System.out.println("Poder " + nom + " eliminado correctamente");
         } else {
-            System.out.println("El poder no existe");
+            System.out.println("No se encontró el poder " + nom);
         }
     }
 }

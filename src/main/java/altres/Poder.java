@@ -4,8 +4,6 @@
  */
 package altres;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Fernando

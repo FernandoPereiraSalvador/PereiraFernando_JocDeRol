@@ -6,7 +6,9 @@ package inici;
 
 import altres.Equip;
 import java.util.ArrayList;
+import teclat.Teclat;
 import static teclat.Pantalla.*;
+
 /**
  *
  * @author Fernando
@@ -29,7 +31,7 @@ public class Equips {
             System.out.println("3.Eliminar");
             System.out.println("0.Eixir");
 
-            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            opcion = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcion) {
                 case 1 ->
@@ -48,7 +50,7 @@ public class Equips {
      * La función crea un nuevo objeto de equipo con un nombre dado y lo añade a una lista si aún no existe.
      */
     public static void crear() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        String nom = Teclat.lligString("Introduce el nombre: ");
 
         Equip nuevoEquip = new Equip(nom);
 
@@ -79,12 +81,19 @@ public class Equips {
      * La función "eliminar" elimina un objeto de una lista si existe, basándose en la entrada del usuario para el nombre del objeto.
      */
     public static void eliminar() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        String nom = Teclat.lligString("Introduce el nombre: ");
+        boolean eliminado = false;
 
-        Equip nuevoEquip = new Equip(nom);
+        for (Equip equip : llista) {
+            if (equip.getNom().equals(nom)) {
+                llista.remove(equip);
+                eliminado = true;
+                break;
+            }
+        }
 
-        if (!llista.contains(nuevoEquip)) {
-            llista.remove(nuevoEquip);
+        if (eliminado) {
+            System.out.println("Equipo eliminado");
         } else {
             System.out.println("El equipo no existe");
         }

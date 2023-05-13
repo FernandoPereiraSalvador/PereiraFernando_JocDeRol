@@ -69,10 +69,8 @@ public class Equip {
     public void lleva(Jugador jugador) {
         if (jugadors.contains(jugador)) {
             jugadors.remove(jugador);
-            jugador.setEquip(null);
 
         }
-
     }
 
     /**

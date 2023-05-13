@@ -11,6 +11,7 @@ import personatges.Alien;
 import personatges.Guerrer;
 import personatges.Huma;
 import personatges.Jugador;
+import teclat.Teclat;
 import static teclat.Pantalla.*;
 
 /**
@@ -35,9 +36,10 @@ public class Jugadors {
             System.out.println("4.Assignar a equip");
             System.out.println("5.Llevar d'equip");
             System.out.println("6.Assignar poder");
+            System.out.println("7.Eliminar poder");
             System.out.println("0.Eixir");
 
-            opcion = teclat.Teclat.lligInt("Introduce la opcion: ");
+            opcion = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcion) {
                 case 1 ->
@@ -52,6 +54,8 @@ public class Jugadors {
                     llevarEquip();
                 case 6 ->
                     assignarPoder();
+                case 7 ->
+                    eliminarPoder();
                 default -> {
                 }
             }
@@ -62,9 +66,9 @@ public class Jugadors {
      * Esta función crea un nuevo objeto jugador basado en la entrada del usuario y lo añade a una lista de jugadores, comprobando si hay duplicados antes de añadirlo.
      */
     public static void crear() {
-        char tipoJugador = teclat.Teclat.lligChar("Introduce el tipo de jugador", "HGA");
-        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
-        int puntsAtac = teclat.Teclat.lligInt("Introduce los puntos de ataque: ", 1, 100);
+        char tipoJugador = Teclat.lligChar("Introduce el tipo de jugador", "HGA");
+        String nom = Teclat.lligString("Introduce el nombre: ");
+        int puntsAtac = Teclat.lligInt("Introduce los puntos de ataque: ", 1, 100);
         int puntsDefensa = Math.abs(puntsAtac - 100);
 
         Jugador nuevoJugador = null;
@@ -114,7 +118,7 @@ public class Jugadors {
      */
     public static void eliminar() {
 
-        String nom = teclat.Teclat.lligString("Introduce el nombre: ");
+        String nom = Teclat.lligString("Introduce el nombre: ");
         boolean Noeliminado = true;
 
         for (Jugador jugador : llista) {
@@ -136,8 +140,8 @@ public class Jugadors {
      * Esta función asigna un jugador a un equipo basándose en los datos introducidos por el usuario y comprueba si tanto el jugador como el equipo existen en el sistema.
      */
     public static void assignarEquip() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
-        String nomEquip = teclat.Teclat.lligString("Introduce el nombre del equipo: ");
+        String nom = Teclat.lligString("Introduce el nombre del jugador: ");
+        String nomEquip = Teclat.lligString("Introduce el nombre del equipo: ");
 
         Jugador jugador = null;
         Equip equip = null;
@@ -193,8 +197,8 @@ public class Jugadors {
             return;
         }
 
-        String nomJugador = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
-        String poderNombre = teclat.Teclat.lligString("Introduce el nombre del poder: ");
+        String nomJugador = Teclat.lligString("Introduce el nombre del jugador: ");
+        String poderNombre = Teclat.lligString("Introduce el nombre del poder: ");
 
         Jugador jugadorAsignar = null;
         Poder poderAsignar = null;
@@ -228,39 +232,78 @@ public class Jugadors {
      * La función permite al usuario asignar un jugador a un equipo introduciendo el nombre del jugador y el nombre del equipo, y luego comprobando si ambos existen en sus respectivas listas antes de asignar el jugador al equipo.
      */
     public static void llevarEquip() {
-        String nom = teclat.Teclat.lligString("Introduce el nombre del jugador: ");
-        String nomEquip = teclat.Teclat.lligString("Introduce el nombre del equipo: ");
+        String nom = Teclat.lligString("Introduce el nombre del jugador: ");
+        String nomEquip = Teclat.lligString("Introduce el nombre del equipo: ");
 
         Jugador jugador = null;
         Equip equip = null;
 
-        for (int i = 0; i < llista.size(); i++) {
-            jugador = llista.get(i);
-            if (jugador.getNom().equals(nom)) {
+        // Busca el jugador en la lista de jugadores
+        for (Jugador j : llista) {
+            if (j.getNom().equals(nom)) {
+                jugador = j;
                 break;
-            } else {
-                jugador = null;
             }
         }
 
-        for (int i = 0; i < Equips.llista.size(); i++) {
-            equip = Equips.llista.get(i);
-            if (equip.getNom().equals(nomEquip)) {
+        // Busca el equipo en la lista de equipos
+        for (Equip e : Equips.llista) {
+            if (e.getNom().equals(nomEquip)) {
+                equip = e;
                 break;
-            } else {
-                equip = null;
             }
         }
 
         if (equip != null && jugador != null) {
+            System.out.println("Hola1");
             equip.lleva(jugador);
-            System.out.println(" El jugador " + nom + " se ha eliminado del equipo " + nomEquip + " correctamente");
+            System.out.println("El jugador " + nom + " se ha eliminado del equipo " + nomEquip + " correctamente");
         } else {
             System.out.println("El jugador o el equipo no existen");
         }
     }
-    
-    public static void matar(Jugador matado){
+
+    public static void matar(Jugador matado) {
         llista.remove(matado);
+    }
+
+    public static void eliminarPoder() {
+
+        String nomJugador = Teclat.lligString("Introduce el nombre del jugador: ");
+
+        Jugador jugadorAsignar = null;
+
+        for (Jugador jugador : llista) {
+            if (jugador.getNom().equals(nomJugador)) {
+                jugadorAsignar = jugador;
+                break;
+            }
+        }
+
+        if (jugadorAsignar.getPoders().isEmpty()) {
+            System.out.println("El jugador no tiene poderes");
+        } else {
+            System.out.println("Poderes del jugador: ");
+            for (Poder poder : jugadorAsignar.getPoders()) {
+                System.out.println(poder);
+            }
+
+            String poderNombre = Teclat.lligString("Introduce el nombre del poder: ");
+            Poder poderEliminar = null;
+            
+            for (Poder poder : jugadorAsignar.getPoders()) {
+                if(poder.getNom() == null ? poderNombre == null : poder.getNom().equals(poderNombre)){
+                    poderEliminar = poder;
+                }
+            }
+            
+            if(poderEliminar!=null && jugadorAsignar!=null){
+                jugadorAsignar.lleva(poderEliminar);
+            }else{
+                System.out.println("El jugador o el poder no existen");
+            }
+
+        }
+
     }
 }
