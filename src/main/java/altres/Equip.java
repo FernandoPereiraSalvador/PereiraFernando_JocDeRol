@@ -66,7 +66,7 @@ public class Equip {
      *                representa a un
      *                jugador.
      */
-    public void llevar(Jugador jugador) {
+    public void lleva(Jugador jugador) {
         if (jugadors.contains(jugador)) {
             jugadors.remove(jugador);
             jugador.setEquip(null);

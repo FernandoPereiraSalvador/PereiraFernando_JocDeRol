@@ -10,6 +10,7 @@ import personatges.Alien;
 import altres.*;
 import java.util.ArrayList;
 import inici.Jugadors;
+
 /**
  *
  * @author Fernando
@@ -145,7 +146,7 @@ public class Jugador {
     public void setEquip(Equip equip) {
 
         if (this.getEquip() != null) {
-            equip.llevar(this);
+            equip.lleva(this);
         } else {
             equip.posa(this);
 
@@ -240,20 +241,15 @@ public class Jugador {
      * @param bonoDefensa El parámetro "bonoDefensa" es un valor entero que representa una bonificación a los puntos de defensa del defensor. Se añade a los puntos de defensa base del defensor para calcular el total de puntos de defensa utilizados en el cálculo del ataque. puntos de defensa utilizados en el cálculo del ataque.
      */
     protected void esColpejatAmb(int quantitat, int defensa, int bonoAtaque, int bonoDefensa) {
-
         int ataque = Math.max((quantitat + bonoAtaque) - (defensa + bonoDefensa), 0);
         int videsAnteriors = this.getVides();
-        if (ataque > 0 && !(this instanceof Guerrer)) {
-            this.setVides(this.getVides() - ataque);
 
-        } else if (ataque >= 5 && this instanceof Guerrer) {
+        if (ataque > 0) {
             this.setVides(this.getVides() - ataque);
-            System.out.println("guerrero");
         }
 
         System.out.println(nom + " és colpejat amb " + (quantitat + bonoAtaque) + " punts i es defén amb " + (defensa + bonoDefensa) + ". Vides: "
                 + videsAnteriors + " - " + ataque + "= " + vides);
-
     }
 
     /**
@@ -263,18 +259,9 @@ public class Jugador {
      */
     @Override
     public String toString() {
-
-        String tipo = "";
-
-        if (this instanceof Guerrer) {
-            tipo = "Guerrer";
-        } else if (this instanceof Alien) {
-            tipo = "Alien";
-        } else if (this instanceof Huma) {
-            tipo = "Huma";
-        }
-
-        return nom + "(" + tipo + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")";
+        String nomClasse = this.getClass().getName();
+        nomClasse = nomClasse.substring(nomClasse.lastIndexOf(".") + 1);
+        return nom + "(" + nomClasse + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")";
     }
 
     /**
@@ -303,9 +290,7 @@ public class Jugador {
 
         if (!this.poders.contains(poder)) {
             this.poders.add(poder);
-
         }
-
     }
 
     /**
@@ -313,7 +298,7 @@ public class Jugador {
      *
      * @param poder poder es un objeto de la clase Poder, que se pasa como parámetro al método método llevar.
      */
-    public void llevar(Poder poder) {
+    public void lleva(Poder poder) {
         if (this.poders.contains(poder)) {
             this.poders.remove(poder);
         }

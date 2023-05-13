@@ -67,8 +67,10 @@ public class PereiraFernando_JocDeRol {
                 System.out.println("Opcion incorrecta");
         }
     }
+
     /**
      * Comprueba que haya suficientes jugadores para jugar una partida.
+     *
      * @return Un true si no se puede jugar y false en caso contrario
      */
     public static boolean NoSePuedeJugar() {
@@ -95,8 +97,6 @@ public class PereiraFernando_JocDeRol {
         Jugador randomJugador2 = null;
 
         // Variables para detectar caso de empate
-        Jugador anterior1 = null;
-        Jugador anterior2 = null;
         int contadorEmpates = 0;
         int maxEmpates = 10;
 
@@ -120,8 +120,8 @@ public class PereiraFernando_JocDeRol {
             randomJugador1 = Jugadors.llista.get(randomIndexJugador1);
             randomJugador2 = Jugadors.llista.get(randomIndexJugador2);
 
-            anterior1 = randomJugador1;
-            anterior2 = randomJugador2;
+            int vidaAntesAtaque1 = randomJugador1.getVides();
+            int vidaAntesAtaque2 = randomJugador2.getVides();
 
             try {
                 randomJugador1.ataca(randomJugador2);
@@ -129,8 +129,10 @@ public class PereiraFernando_JocDeRol {
                 System.out.println(e.getMessage());
             }
 
-            if (anterior1.getVides() == randomJugador1.getVides() && anterior2.getVides() == randomJugador2.getVides()) {
+            if (vidaAntesAtaque1 == randomJugador1.getVides() && vidaAntesAtaque2 == randomJugador2.getVides()) {
                 contadorEmpates++;
+            } else {
+                contadorEmpates = 0;
             }
 
             if (contadorEmpates == maxEmpates) {
@@ -178,14 +180,19 @@ public class PereiraFernando_JocDeRol {
                             Jugadors.llista.size() - 1);
                     anterior1 = jugador;
                     anterior2 = Jugadors.llista.get(jugadorAtacado);
+
+                    int vidaAntesAtaque1 = jugador.getVides();
+                    int vidaAntesAtaque2 = Jugadors.llista.get(jugadorAtacado).getVides();
                     try {
                         jugador.ataca(Jugadors.llista.get(jugadorAtacado));
                     } catch (AtacAMortException | AtacEllMateixException e) {
                         System.out.println(e.getMessage());
                     }
 
-                    if (anterior1.getVides() == jugador.getVides() && anterior2.getVides() == Jugadors.llista.get(jugadorAtacado).getVides()) {
+                    if (vidaAntesAtaque1 == anterior1.getVides() && vidaAntesAtaque2 == anterior2.getVides()) {
                         contadorEmpates++;
+                    } else {
+                        contadorEmpates = 0;
                     }
 
                     if (contadorEmpates == maxEmpates) {
