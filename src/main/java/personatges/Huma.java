@@ -24,6 +24,5 @@ public class Huma extends Jugador {
 
         super(nom, puntsAtac, puntsDefensa, (vides > 100) ? 100 : vides);
     }
-    
 
 }

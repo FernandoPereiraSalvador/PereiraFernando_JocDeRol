@@ -49,16 +49,28 @@ public class Alien extends Jugador {
             enloquecido = false;
         }
     }
-    
-        public void ataca(Jugador jugador) throws AtacAMortException, AtacEllMateixException {
 
+    /**
+     * La función "ataca" simula un ataque entre dos jugadores en una partida,
+     * comprobando las excepciones y
+     * actualizando sus puntos de vida en consecuencia.
+     * 
+     * @param jugador El parámetro "jugador" es un objeto de la clase "Jugador", que
+     *                representa al jugador
+     *                que está siendo atacado por el jugador actual.
+     */
+    public void ataca(Jugador jugador) throws AtacAMortException, AtacEllMateixException {
+
+        // Llamamos a la función enloquecer.
         enloquecer();
-                
+
+        // Mostramos los datos antes del ataque
         System.out.println("ABANS DE L'ATAC");
         System.out.println("Atacant: " + this.toString());
         System.out.println("Atacat: " + jugador.toString());
         System.out.println("");
 
+        // Atacamos y mostramos los datos
         System.out.println("ATAC");
 
         if (this.getVides() <= 0 || jugador.getVides() <= 0) {
@@ -80,6 +92,7 @@ public class Alien extends Jugador {
             this.setVides(0);
         }
 
+        // Mostramos los datos después del ataque.
         System.out.println("");
 
         System.out.println("DESPRÉS DE L'ATAC");

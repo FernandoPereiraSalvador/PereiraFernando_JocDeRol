@@ -97,5 +97,4 @@ public class Poder {
         return nom + " { bonusAtac=" + bonusAtac + ", bonusDefensa=" + bonusDefensa + '}';
     }
 
-
 }

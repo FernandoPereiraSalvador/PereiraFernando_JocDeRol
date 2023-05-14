@@ -18,7 +18,8 @@ public class Poders {
     public static ArrayList<Poder> llista = new ArrayList<Poder>();
 
     /**
-     * Esta función muestra un menú con opciones para crear, consultar o eliminar potencias y realiza un bucle hasta que el usuario decida salir.
+     * Esta función muestra un menú con opciones para crear, consultar o eliminar
+     * potencias y realiza un bucle hasta que el usuario decida salir.
      */
     public static void menu() {
         int opcion = -1;
@@ -48,7 +49,9 @@ public class Poders {
     }
 
     /**
-     * Esta función Java crea un nuevo objeto "Poder" con el nombre, bono de ataque y bono de defensa introducidos por el usuario. , y lo añade a una lista si no existe ya.
+     * Esta función Java crea un nuevo objeto "Poder" con el nombre, bono de ataque
+     * y bono de defensa introducidos por el usuario. , y lo añade a una lista si no
+     * existe ya.
      */
     public static void crear() {
         String nom = Teclat.lligString("Introduce el nombre: ");
@@ -71,41 +74,68 @@ public class Poders {
     }
 
     /**
-     * La función "consultar" comprueba si una lista de potencias está vacía e imprime un mensaje en consecuencia, o bien imprime cada potencia de la lista.
+     * La función "consultar" comprueba si una lista de potencias está vacía e
+     * imprime un mensaje en consecuencia, o bien imprime cada potencia de la lista.
      */
     public static void consultar() {
         if (llista.isEmpty()) {
             System.out.println("No hay poderes creados");
         } else {
             System.out.println("Lista de poderes: ");
-            for (Poder poder : llista) {
-                System.out.println(poder.toString());
-            }
+            mostrarPoderes();
         }
 
     }
 
     /**
-     * Esta función Java elimina una potencia de una lista si existe, basándose en los datos introducidos por el usuario para la potencia.
+     * Esta función Java elimina una potencia de una lista si existe, basándose en
+     * los datos introducidos por el usuario para la potencia.
      */
     public static void eliminar() {
-        String nom = Teclat.lligString("Introduce el nombre: ");
+
+        System.out.println("Poderes disponibles: ");
+        mostrarPoderes();
 
         // Buscar el poder en la lista
-        Poder poderAEliminar = null;
-        for (Poder poder : llista) {
-            if (poder.getNom().equals(nom)) {
-                poderAEliminar = poder;
-                break;
-            }
-        }
+        Poder poderAEliminar = buscar();
 
         // Eliminar el poder si se encontró
         if (poderAEliminar != null) {
+            System.out.println("Poder " + poderAEliminar.getNom() + " eliminado correctamente");
             llista.remove(poderAEliminar);
-            System.out.println("Poder " + nom + " eliminado correctamente");
         } else {
-            System.out.println("No se encontró el poder " + nom);
+            System.out.println("No se encontró el poder ");
         }
+    }
+
+    /**
+     * La función "mostrarPoderes" imprime la representación en cadena de cada
+     * objeto de la lista "llista".
+     */
+    public static void mostrarPoderes() {
+        for (Poder poder : llista) {
+            System.out.println(poder.toString());
+        }
+        System.out.println("");
+    }
+
+    /**
+     * La función busca un poder por su nombre en una lista y la devuelve si la
+     * encuentra, en caso contrario devuelve null.
+     * 
+     * @return El método devuelve un objeto de tipo "Poder" (que es una clase
+     *         personalizada) o null si el
+     *         potencia con el nombre dado no se encuentra en la lista.
+     */
+    public static Poder buscar() {
+
+        String nom = Teclat.lligString("Introduce el nombre del poder: ");
+
+        for (Poder poder : llista) {
+            if (poder.getNom().equals(nom)) {
+                return poder;
+            }
+        }
+        return null;
     }
 }

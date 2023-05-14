@@ -8,7 +8,8 @@ public class Pantalla {
     // ======== FUNCIONS PER A L'EIXIDA DE DADES PER PANTALLA ==========
 
     /**
-     * Esta función imprime un título de menú con una línea de signos iguales por encima y por debajo, centrado dentro de una línea de 40 caracteres.
+     * Esta función imprime un título de menú con una línea de signos iguales por
+     * encima y por debajo, centrado dentro de una línea de 40 caracteres.
      *
      * @param title El título del menú que se imprimirá.
      */
@@ -22,9 +23,10 @@ public class Pantalla {
     }
 
     /**
-     * Mostra el text passat com a paràmetre en un format especial. Li posa un Quadradet al voltant, segons la grandària del text.
+     * Mostra el text passat com a paràmetre en un format especial. Li posa un
+     * Quadradet al voltant, segons la grandària del text.
      *
-     * @param text Text del títol
+     * @param text   Text del títol
      * @param espais Espais a l'esquerra del títol
      */
     public static void titol(String text, String espais) {
@@ -45,7 +47,8 @@ public class Pantalla {
     }
 
     /**
-     * Mostra el text passat com a paràmetre en un format especial. Li posa un Quadradet al voltant, segons la grandària del text.
+     * Mostra el text passat com a paràmetre en un format especial. Li posa un
+     * Quadradet al voltant, segons la grandària del text.
      *
      * @param text Text del títol
      */
@@ -54,7 +57,9 @@ public class Pantalla {
     }
 
     /**
-     * Mostra el text passat com a paràmetre en un format especial i un poc centrat en la pantalla. Li posa un Quadradet al voltant, segons la grandària del text.
+     * Mostra el text passat com a paràmetre en un format especial i un poc centrat
+     * en la pantalla. Li posa un Quadradet al voltant, segons la grandària del
+     * text.
      *
      * @param text Text del títol
      */
@@ -82,7 +87,8 @@ public class Pantalla {
     }
 
     /**
-     * Retorna una línia de ratlletes de la grandària especificada. És invocada (entre altres) pel toString de la classe Serie.
+     * Retorna una línia de ratlletes de la grandària especificada. És invocada
+     * (entre altres) pel toString de la classe Serie.
      *
      * @param n Grandària de la línia (en quantitat de caràcters)
      * @return la línia de ratlletes.
@@ -96,9 +102,10 @@ public class Pantalla {
     }
 
     /**
-     * Retorna un text que càpiga en un tros, alineat a esquerra. Pensat per a ser usat en el toString.
+     * Retorna un text que càpiga en un tros, alineat a esquerra. Pensat per a ser
+     * usat en el toString.
      *
-     * @param text Text del qual volem obtindre un tros
+     * @param text   Text del qual volem obtindre un tros
      * @param espais Quantitat d'espais que ha d'ocupar el text
      * @return El text amb eixos espais (sempre retorna un blanc al final)
      */
@@ -117,7 +124,8 @@ public class Pantalla {
     }
 
     /**
-     * Retorna un número que càpiga en un tros, alineat a dreta. Pensat per a ser usat en el toString
+     * Retorna un número que càpiga en un tros, alineat a dreta. Pensat per a ser
+     * usat en el toString
      *
      * @param numero Número del qual volem posar en un tros
      * @param espais Quantitat d'espais que ha d'ocupar el número
@@ -155,7 +163,7 @@ public class Pantalla {
     /**
      * Mostra un text en una quantitat d'espais.
      *
-     * @param text Text que volem mostrar
+     * @param text   Text que volem mostrar
      * @param espais Quantitat d'espais destinada a mostrar el text.
      */
     public static void print(String text, int espais) {
@@ -167,16 +175,16 @@ public class Pantalla {
 
         // Arrays.toString fa el mateix que açò:
         /*
-        System.out.print("[");
-        // Tots excepte l'últim element:
-        for (int i = 0; i < v.length-1; i++) {
-            System.out.print(v[i] + ", ");            
-        }
-        // Últim element:
-        if (v.length>0){
-            System.out.print(v[v.length-1]);
-        }
-        System.out.println("]");
+         * System.out.print("[");
+         * // Tots excepte l'últim element:
+         * for (int i = 0; i < v.length-1; i++) {
+         * System.out.print(v[i] + ", ");
+         * }
+         * // Últim element:
+         * if (v.length>0){
+         * System.out.print(v[v.length-1]);
+         * }
+         * System.out.println("]");
          */
     }
 

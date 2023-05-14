@@ -44,7 +44,7 @@ public class Teclat {
      * Aconseguix un caràcter de teclat entre uns possibles valors. Nota:
      * retorna el caràcter en majúscula.
      *
-     * @param missatge Text per a fer la pregunta per teclat.
+     * @param missatge  Text per a fer la pregunta per teclat.
      * @param possibles Cadena amb els possibles caràcters de resposta.
      * @return El caràcter introduït per teclat entre els possibles.
      */
@@ -233,8 +233,8 @@ public class Teclat {
      * estiga en un rang de possibles valors.
      *
      * @param missatge Text a mostrar.
-     * @param min Valor mínim (inclòs).
-     * @param max Valor màxim (inclòs).
+     * @param min      Valor mínim (inclòs).
+     * @param max      Valor màxim (inclòs).
      * @return el número introduït
      */
     public static int lligInt(String missatge, int min, int max) {
@@ -253,7 +253,7 @@ public class Teclat {
      * tinga un límit inferior.
      *
      * @param missatge Text a mostrar.
-     * @param min Valor mínim (inclòs).
+     * @param min      Valor mínim (inclòs).
      * @return el número introduït
      */
     public static int lligInt(String missatge, int min) {
@@ -311,7 +311,7 @@ public class Teclat {
      * tinga un límit inferior.
      *
      * @param missatge Text a mostrar.
-     * @param min Valor mínim (inclòs).
+     * @param min      Valor mínim (inclòs).
      * @return el número introduït
      */
     public static float lligFloat(String missatge, float min) {
@@ -328,9 +328,10 @@ public class Teclat {
     /**
      * Mostra menú d'opcions i torna el número de l'opció triada per teclat.
      *
-     * @param titol Títol del menú
+     * @param titol   Títol del menú
      * @param opcions Textos de les distintes opcions (en format d'arguments
-     * variables). No es passarà opció d'eixir, ja que s'afegirà l'opció 0.
+     *                variables). No es passarà opció d'eixir, ja que s'afegirà
+     *                l'opció 0.
      * @return El número de l'opció triada (1, 2, 3... o 0 per a eixir)
      */
     public static int lligOpcio(String titol, String... opcions) {
@@ -365,7 +366,7 @@ public class Teclat {
     /**
      * Retorna un caràcter repetit (cridat per funció lligOpcio)
      *
-     * @param c Caràcter a repetir
+     * @param c       Caràcter a repetir
      * @param vegades Quantitat de vegades a repetir el caràcter
      * @return cadena amb el caràcter repetit
      */

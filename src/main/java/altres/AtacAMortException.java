@@ -10,9 +10,9 @@ package altres;
  */
 public class AtacAMortException extends Exception {
 
-  
     /**
      * Constructor pasandole el texto del error
+     * 
      * @param msg El mensaje del error
      */
     public AtacAMortException(String msg) {
