@@ -105,9 +105,7 @@ public class Jugadors {
             System.out.println("No hay jugadores creados");
         } else {
             System.out.println("Lista de jugadores:");
-            for (Jugador jugador : llista) {
-                System.out.println(jugador);
-            }
+            mostrarJugadores();
         }
     }
 
@@ -116,11 +114,20 @@ public class Jugadors {
      */
     public static void eliminar() {
 
+        if (llista.isEmpty()) {
+            System.out.println("No hay jugadores creados");
+            return;
+        } else {
+            System.out.println("Lista de jugadores:");
+            mostrarJugadores();
+        }
+
+        System.out.println("");
         String nom = Teclat.lligString("Introduce el nombre: ");
         boolean eliminado = llista.removeIf(jugador -> jugador.getNom().equals(nom));
 
         if (eliminado) {
-            System.out.println("Se ha eliminado el jugador " + nom +" correctamente");
+            System.out.println("Se ha eliminado el jugador " + nom + " correctamente");
         } else {
             System.out.println("No se ha encontrado al jugador " + nom);
         }
@@ -131,36 +138,50 @@ public class Jugadors {
      * Esta función asigna un jugador a un equipo basándose en los datos introducidos por el usuario y comprueba si tanto el jugador como el equipo existen en el sistema.
      */
     public static void assignarEquip() {
-        String nom = Teclat.lligString("Introduce el nombre del jugador: ");
-        String nomEquip = Teclat.lligString("Introduce el nombre del equipo: ");
+
+        if (llista.isEmpty() || Equips.llista.isEmpty()) {
+            System.out.println("No existen jugadores o equipos: ");
+        }
 
         Jugador jugador = null;
         Equip equip = null;
 
-        for (int i = 0; i < llista.size(); i++) {
-            jugador = llista.get(i);
-            if (jugador.getNom().equals(nom)) {
+        System.out.println("Jugadores disponibles: ");
+        mostrarJugadores();
+
+        String nom = Teclat.lligString("Introduce el nombre del jugador: ");
+
+        for (Jugador jugador1 : llista) {
+            if (jugador1.getNom().equals(nom)) {
+                jugador = jugador1;
                 break;
-            } else {
-                jugador = null;
             }
         }
 
-        for (int i = 0; i < Equips.llista.size(); i++) {
-            equip = Equips.llista.get(i);
-            if (equip.getNom().equals(nomEquip)) {
+        if (jugador == null) {
+            System.out.println("No se ha encontrado al jugador");
+            return;
+        }
+
+        System.out.println("Equipos disponibles: ");
+        Equips.mostrarEquips();
+
+        String nomEquip = Teclat.lligString("Introduce el nombre del equipo: ");
+
+        for (Equip equip1 : Equips.llista) {
+            if (equip1.getNom().equals(nomEquip)) {
+                equip = equip1;
                 break;
-            } else {
-                equip = null;
             }
         }
 
-        if (equip != null && jugador != null) {
-            equip.posa(jugador);
-            System.out.println("El jugador " + nom + " se ha asignado al equipo " + nomEquip + " correctamente");
-        } else {
-            System.out.println("El jugador o el equipo no existen");
+        if (equip == null) {
+            System.out.println("No se ha encontrado al equipo");
+            return;
         }
+
+        equip.posa(jugador);
+        System.out.println("El jugador " + nom + " se ha asignado al equipo " + nomEquip + " correctamente");
     }
 
     /**
@@ -223,11 +244,14 @@ public class Jugadors {
      * La función permite al usuario asignar un jugador a un equipo introduciendo el nombre del jugador y el nombre del equipo, y luego comprobando si ambos existen en sus respectivas listas antes de asignar el jugador al equipo.
      */
     public static void llevarEquip() {
-        String nom = Teclat.lligString("Introduce el nombre del jugador: ");
-        String nomEquip = Teclat.lligString("Introduce el nombre del equipo: ");
 
         Jugador jugador = null;
         Equip equip = null;
+
+        System.out.println("Jugadores disponibles: ");
+        mostrarJugadores();
+
+        String nom = Teclat.lligString("Introduce el nombre del jugador: ");
 
         // Busca el jugador en la lista de jugadores
         for (Jugador j : llista) {
@@ -236,26 +260,31 @@ public class Jugadors {
                 break;
             }
         }
+        
+        if(jugador == null){
+            System.out.println("El jugador no existe");
+            return;
+        }
 
         // Busca el equipo en la lista de equipos
         for (Equip e : Equips.llista) {
-            if (e.getNom().equals(nomEquip)) {
+            if (e.getNom().equals(jugador.getEquip().getNom())) {
                 equip = e;
                 break;
             }
         }
 
-        if (equip != null && jugador != null) {
-            System.out.println("Hola1");
+        if (equip != null) {
+            String nomEquip = equip.getNom();
             equip.lleva(jugador);
             System.out.println("El jugador " + nom + " se ha eliminado del equipo " + nomEquip + " correctamente");
         } else {
-            System.out.println("El jugador o el equipo no existen");
+            System.out.println("El equipo no existe");
         }
     }
 
     public static void matar(Jugador matado) {
-        
+
         llista.remove(matado);
     }
 
@@ -270,6 +299,11 @@ public class Jugadors {
                 jugadorAsignar = jugador;
                 break;
             }
+        }
+
+        if (jugadorAsignar == null) {
+            System.out.println("No existe el jugador");
+            return;
         }
 
         if (jugadorAsignar.getPoders().isEmpty()) {
@@ -297,5 +331,13 @@ public class Jugadors {
 
         }
 
+    }
+
+    public static void mostrarJugadores() {
+
+        for (Jugador jugador : llista) {
+            System.out.println(jugador.toString());
+        }
+        System.out.println("");
     }
 }

@@ -141,12 +141,20 @@ public class Jugador {
      * @param equip El equipo
      */
     public void setEquip(Equip equip) {
-
-        if (this.getEquip() != null) {
-            equip.lleva(this);
-        } else {
+        
+        if(equip==null){
+            this.equip = null;
+            return;
+        }
+        
+        Equip equipoActual = this.getEquip();
+        if (equipoActual != null) {
+            equipoActual.lleva(this);
+        }
+        
+        if (equip != equipoActual) {
+            this.equip = equip;
             equip.posa(this);
-
         }
 
     }
@@ -246,6 +254,7 @@ public class Jugador {
         String nomClasse = this.getClass().getName();
         nomClasse = nomClasse.substring(nomClasse.lastIndexOf(".") + 1);
         String poderes = "";
+        String equip = "";
 
         if (!this.poders.isEmpty()) {
             poderes = "Poderes: ";
@@ -254,7 +263,11 @@ public class Jugador {
             }
         }
 
-        return nom + "(" + nomClasse + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")" + poderes;
+        if (this.equip != null) {
+            equip = " (" + this.equip.getNom() + ")  ";
+        }
+
+        return nom + "(" + nomClasse + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")" + equip + poderes;
     }
 
     /**

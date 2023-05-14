@@ -15,7 +15,7 @@ public class Equip {
 
     private String nom;
 
-    ArrayList<Jugador> jugadors = new ArrayList<Jugador>();
+    ArrayList<Jugador> jugadors = new ArrayList<>();
 
     /**
      * El getter de la clase equip
@@ -69,6 +69,7 @@ public class Equip {
     public void lleva(Jugador jugador) {
         if (jugadors.contains(jugador)) {
             jugadors.remove(jugador);
+            jugador.setEquip(null);
 
         }
     }

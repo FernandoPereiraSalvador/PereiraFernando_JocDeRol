@@ -39,7 +39,6 @@ public class JocDeRol {
                 }
                 default -> System.out.println("Has introducido una opción erronea");
             }
-
         }
     }
 
@@ -209,6 +208,7 @@ public class JocDeRol {
                     }
                 }
             } catch (Exception e) {
+                // Se usa para evitar el error ConcurrentModificationException (no se imprime nada porque el usuario no tiene que ver el error)
             }
         }
 

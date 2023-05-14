@@ -15,7 +15,7 @@ import static teclat.Pantalla.*;
  */
 public class Equips {
 
-    public static ArrayList<Equip> llista = new ArrayList<Equip>();
+    public static ArrayList<Equip> llista = new ArrayList<>();
 
     /**
      * Esta función muestra un menú con opciones para crear, consultar o eliminar equipos y realiza un bucle hasta que el usuario decida salir.
@@ -54,6 +54,7 @@ public class Equips {
 
         if (!llista.contains(nuevoEquip)) {
             llista.add(nuevoEquip);
+            System.out.println("El equipo " + nom + " se ha creado correctamente");
         } else {
             System.out.println("El equipo ya existe");
         }
@@ -68,9 +69,7 @@ public class Equips {
             System.out.println("No hay equipos creados");
         } else {
             System.out.println("Lista de equipos: ");
-            for (Equip equip : llista) {
-                System.out.println(equip.toString());
-            }
+            mostrarEquips();
         }
 
     }
@@ -79,6 +78,10 @@ public class Equips {
      * La función "eliminar" elimina un objeto de una lista si existe, basándose en la entrada del usuario para el nombre del objeto.
      */
     public static void eliminar() {
+        
+        System.out.println("Equipos existentes: ");
+        mostrarEquips();
+        
         String nom = Teclat.lligString("Introduce el nombre: ");
         boolean eliminado = false;
 
@@ -95,5 +98,12 @@ public class Equips {
         } else {
             System.out.println("El equipo no existe");
         }
+    }
+    
+    public static void mostrarEquips(){
+        for (Equip equip : llista) {
+            System.out.println(equip.toString());
+        }
+        System.out.println("");
     }
 }

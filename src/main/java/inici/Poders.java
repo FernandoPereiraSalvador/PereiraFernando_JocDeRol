@@ -33,12 +33,16 @@ public class Poders {
             opcion = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcion) {
-                case 1 -> crear();
-                case 2 -> consultar();
-                case 3 -> eliminar();
+                case 1 ->
+                    crear();
+                case 2 ->
+                    consultar();
+                case 3 ->
+                    eliminar();
                 case 0 -> {
                 }
-                default -> System.out.println("Has introducido una opción erronea");
+                default ->
+                    System.out.println("Has introducido una opción erronea");
             }
         }
     }
@@ -48,16 +52,22 @@ public class Poders {
      */
     public static void crear() {
         String nom = Teclat.lligString("Introduce el nombre: ");
+
+        for (Poder poder : llista) {
+            if (poder.getNom().equals(nom)) {
+                System.out.println("El poder ya existe");
+                return;
+            }
+        }
+
         int bonusAtac = Teclat.lligInt("Introduce el bono de ataque: ");
         int bonusDefensa = Teclat.lligInt("Introduce el bono de defensa: ");
 
         Poder nuevoPoder = new Poder(nom, bonusAtac, bonusDefensa);
 
-        if (!llista.contains(nuevoPoder)) {
-            llista.add(nuevoPoder);
-        } else {
-            System.out.println("El equipo ya existe");
-        }
+        llista.add(nuevoPoder);
+        System.out.println("El poder " + nom + " se ha creado correctamente");
+
     }
 
     /**
@@ -80,13 +90,11 @@ public class Poders {
      */
     public static void eliminar() {
         String nom = Teclat.lligString("Introduce el nombre: ");
-        int bonusAtac = Teclat.lligInt("Introduce el bono de ataque: ");
-        int bonusDefensa = Teclat.lligInt("Introduce el bono de defensa: ");
 
         // Buscar el poder en la lista
         Poder poderAEliminar = null;
         for (Poder poder : llista) {
-            if (poder.getNom().equals(nom) && poder.getBonusAtac() == bonusAtac && poder.getBonusDefensa() == bonusDefensa) {
+            if (poder.getNom().equals(nom)) {
                 poderAEliminar = poder;
                 break;
             }
