@@ -1,0 +1,332 @@
+\hypertarget{classpersonatges_1_1_jugador}{}\doxysection{personatges.\+Jugador Class Reference}
+\label{classpersonatges_1_1_jugador}\index{personatges.Jugador@{personatges.Jugador}}
+Inheritance diagram for personatges.\+Jugador\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classpersonatges_1_1_jugador}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classpersonatges_1_1_jugador_a4e517e64739cb045f3b3a5965b9f89b8}{Jugador}} (String nom, int punts\+Atac, int punts\+Defensa, int vides)
+\item 
+String \mbox{\hyperlink{classpersonatges_1_1_jugador_addfd182f1228e7ecc04fe4b70a249996}{get\+Nom}} ()
+\item 
+int \mbox{\hyperlink{classpersonatges_1_1_jugador_ad4b8fd85d49c85c16e2a94f009359b28}{get\+Punts\+Atac}} ()
+\item 
+int \mbox{\hyperlink{classpersonatges_1_1_jugador_ac29047bf0fda04c3aebaa0331ab87d0b}{get\+Punts\+Defensa}} ()
+\item 
+int \mbox{\hyperlink{classpersonatges_1_1_jugador_a34144ded4ef656611bc868f3dbe4c6d2}{get\+Vides}} ()
+\item 
+\mbox{\hyperlink{classaltres_1_1_equip}{Equip}} \mbox{\hyperlink{classpersonatges_1_1_jugador_a83795d2fe42e6d9a52f11af5403c5d79}{get\+Equip}} ()
+\item 
+Array\+List$<$ \mbox{\hyperlink{classaltres_1_1_poder}{Poder}} $>$ \mbox{\hyperlink{classpersonatges_1_1_jugador_ac7c30393be0efedfffeb4d4d57f68f72}{get\+Poders}} ()
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_a334a6bc3c685f3fe524cc604363d8ed5}{set\+Equip}} (\mbox{\hyperlink{classaltres_1_1_equip}{Equip}} equip)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_aeecb69f4b006490cf9783305d6784840}{set\+Poders}} (Array\+List$<$ \mbox{\hyperlink{classaltres_1_1_poder}{Poder}} $>$ poders)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_a3d7262d5f4f08a47f0b380d6b9a55375}{ataca}} (\mbox{\hyperlink{classpersonatges_1_1_jugador}{Jugador}} jugador)  throws Atac\+AMort\+Exception, Atac\+Ell\+Mateix\+Exception 
+\item 
+String \mbox{\hyperlink{classpersonatges_1_1_jugador_a7dc125a0e8016a368e780dd415ba7ead}{to\+String}} ()
+\item 
+boolean \mbox{\hyperlink{classpersonatges_1_1_jugador_a8cebda79ed49746d28443d40973b18ed}{equals}} (\mbox{\hyperlink{classpersonatges_1_1_jugador}{Jugador}} player)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_acbee2c88e5f6b8f6b8c08d7d63c89150}{posa}} (\mbox{\hyperlink{classaltres_1_1_poder}{Poder}} poder)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_a5d3a16e0b04416095863426a2f7df163}{lleva}} (\mbox{\hyperlink{classaltres_1_1_poder}{Poder}} poder)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_aa069af6e8fd4f7936ec40df75876f5a3}\label{classpersonatges_1_1_jugador_aa069af6e8fd4f7936ec40df75876f5a3}} 
+static int {\bfseries get\+Cantidad\+Vidas} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_ad9cfc902d065e0df148f3cff1ad26bc3}{set\+Nom}} (String nom)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_abc1b541bbcd6eee6e57e7f4030712b59}{set\+Punts\+Atac}} (int punts\+Atac)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_afc1169ecf9277a3bda11307608ea1bd4}{set\+Punts\+Defensa}} (int punts\+Defensa)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_a661fe2a01afde5154368d29e8d959993}{set\+Vides}} (int vides)
+\item 
+void \mbox{\hyperlink{classpersonatges_1_1_jugador_aeba87678a22800d324cb95b8683653bb}{es\+Colpejat\+Amb}} (int daño)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Fernando 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a4e517e64739cb045f3b3a5965b9f89b8}\label{classpersonatges_1_1_jugador_a4e517e64739cb045f3b3a5965b9f89b8}} 
+\index{personatges.Jugador@{personatges.Jugador}!Jugador@{Jugador}}
+\index{Jugador@{Jugador}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{Jugador()}{Jugador()}}
+{\footnotesize\ttfamily personatges.\+Jugador.\+Jugador (\begin{DoxyParamCaption}\item[{String}]{nom,  }\item[{int}]{punts\+Atac,  }\item[{int}]{punts\+Defensa,  }\item[{int}]{vides }\end{DoxyParamCaption})}
+
+El constructor del Jugador
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & El nombre que representa al jugador (es único para cada uno) \\
+\hline
+{\em punts\+Atac} & Los puntos de ataque \\
+\hline
+{\em punts\+Defensa} & Los puntos de defensa \\
+\hline
+{\em vides} & Los puntos de vida \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a3d7262d5f4f08a47f0b380d6b9a55375}\label{classpersonatges_1_1_jugador_a3d7262d5f4f08a47f0b380d6b9a55375}} 
+\index{personatges.Jugador@{personatges.Jugador}!ataca@{ataca}}
+\index{ataca@{ataca}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{ataca()}{ataca()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+ataca (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpersonatges_1_1_jugador}{Jugador}}}]{jugador }\end{DoxyParamCaption}) throws \mbox{\hyperlink{classaltres_1_1_atac_a_mort_exception}{Atac\+AMort\+Exception}}, \mbox{\hyperlink{classaltres_1_1_atac_ell_mateix_exception}{Atac\+Ell\+Mateix\+Exception}}}
+
+Esta función simula un ataque entre dos jugadores en una partida, teniendo en cuenta su ataque y los bonus de defensa.
+
+
+\begin{DoxyParams}{Parameters}
+{\em jugador} & El parámetro \char`\"{}jugador\char`\"{} es un objeto de la clase \char`\"{}\+Jugador\char`\"{}, que representa a un jugador en el juego. El método \char`\"{}ataca\char`\"{} se utiliza para atacar a otro jugador de la partida, y el parámetro jugador"{} representa al jugador que está siendo atacado. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em Atac\+AMort\+Exception} & Error si ataca a un jugador muerto \\
+\hline
+{\em Atac\+Ell\+Mateix\+Exception} & Error si se ataca a si mismo \\
+\hline
+\end{DoxyExceptions}
+
+
+Reimplemented in \mbox{\hyperlink{classpersonatges_1_1_alien_a9049d17bac7fec24b1cb283336d2fcde}{personatges.\+Alien}}.
+
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a8cebda79ed49746d28443d40973b18ed}\label{classpersonatges_1_1_jugador_a8cebda79ed49746d28443d40973b18ed}} 
+\index{personatges.Jugador@{personatges.Jugador}!equals@{equals}}
+\index{equals@{equals}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{equals()}{equals()}}
+{\footnotesize\ttfamily boolean personatges.\+Jugador.\+equals (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpersonatges_1_1_jugador}{Jugador}}}]{player }\end{DoxyParamCaption})}
+
+Esta función Java comprueba si dos objetos de tipo Jugador son iguales basándose en su atributo nom.
+
+
+\begin{DoxyParams}{Parameters}
+{\em player} & El parámetro \char`\"{}jugador\char`\"{} es un objeto de la clase \char`\"{}\+Jugador\char`\"{}, que está siendo comparado con el objeto actual utilizando el método \char`\"{}equals\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+El método devuelve un valor booleano, ya sea verdadero o falso, dependiendo de si el objeto jugador dado es igual al objeto actual basándose en su atributo nombre (nom). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_aeba87678a22800d324cb95b8683653bb}\label{classpersonatges_1_1_jugador_aeba87678a22800d324cb95b8683653bb}} 
+\index{personatges.Jugador@{personatges.Jugador}!esColpejatAmb@{esColpejatAmb}}
+\index{esColpejatAmb@{esColpejatAmb}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{esColpejatAmb()}{esColpejatAmb()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+es\+Colpejat\+Amb (\begin{DoxyParamCaption}\item[{int}]{daño }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+La función calcula el daño recibido por un personaje basado en los puntos de ataque y defensa, y actualiza sus puntos de salud restantes en consecuencia.
+
+
+\begin{DoxyParams}{Parameters}
+{\em daño} & Cantidad de daño infligido al personaje ataca \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classpersonatges_1_1_guerrer_a3f8690b1c7d8d58dc5c430be60ab0d24}{personatges.\+Guerrer}}.
+
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a83795d2fe42e6d9a52f11af5403c5d79}\label{classpersonatges_1_1_jugador_a83795d2fe42e6d9a52f11af5403c5d79}} 
+\index{personatges.Jugador@{personatges.Jugador}!getEquip@{getEquip}}
+\index{getEquip@{getEquip}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{getEquip()}{getEquip()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classaltres_1_1_equip}{Equip}} personatges.\+Jugador.\+get\+Equip (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve el equipo
+
+\begin{DoxyReturn}{Returns}
+El equipo del jugador 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_addfd182f1228e7ecc04fe4b70a249996}\label{classpersonatges_1_1_jugador_addfd182f1228e7ecc04fe4b70a249996}} 
+\index{personatges.Jugador@{personatges.Jugador}!getNom@{getNom}}
+\index{getNom@{getNom}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{getNom()}{getNom()}}
+{\footnotesize\ttfamily String personatges.\+Jugador.\+get\+Nom (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve el nombre del jugador
+
+\begin{DoxyReturn}{Returns}
+El nombre del jugador 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_ac7c30393be0efedfffeb4d4d57f68f72}\label{classpersonatges_1_1_jugador_ac7c30393be0efedfffeb4d4d57f68f72}} 
+\index{personatges.Jugador@{personatges.Jugador}!getPoders@{getPoders}}
+\index{getPoders@{getPoders}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{getPoders()}{getPoders()}}
+{\footnotesize\ttfamily Array\+List$<$ \mbox{\hyperlink{classaltres_1_1_poder}{Poder}} $>$ personatges.\+Jugador.\+get\+Poders (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve una lista con los poderes del jugador
+
+\begin{DoxyReturn}{Returns}
+Una lista con los poderes 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_ad4b8fd85d49c85c16e2a94f009359b28}\label{classpersonatges_1_1_jugador_ad4b8fd85d49c85c16e2a94f009359b28}} 
+\index{personatges.Jugador@{personatges.Jugador}!getPuntsAtac@{getPuntsAtac}}
+\index{getPuntsAtac@{getPuntsAtac}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{getPuntsAtac()}{getPuntsAtac()}}
+{\footnotesize\ttfamily int personatges.\+Jugador.\+get\+Punts\+Atac (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve los puntos de ataque
+
+\begin{DoxyReturn}{Returns}
+Puntos de ataque 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_ac29047bf0fda04c3aebaa0331ab87d0b}\label{classpersonatges_1_1_jugador_ac29047bf0fda04c3aebaa0331ab87d0b}} 
+\index{personatges.Jugador@{personatges.Jugador}!getPuntsDefensa@{getPuntsDefensa}}
+\index{getPuntsDefensa@{getPuntsDefensa}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{getPuntsDefensa()}{getPuntsDefensa()}}
+{\footnotesize\ttfamily int personatges.\+Jugador.\+get\+Punts\+Defensa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve los puntos de defensa
+
+\begin{DoxyReturn}{Returns}
+Los puntos de defensa 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a34144ded4ef656611bc868f3dbe4c6d2}\label{classpersonatges_1_1_jugador_a34144ded4ef656611bc868f3dbe4c6d2}} 
+\index{personatges.Jugador@{personatges.Jugador}!getVides@{getVides}}
+\index{getVides@{getVides}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{getVides()}{getVides()}}
+{\footnotesize\ttfamily int personatges.\+Jugador.\+get\+Vides (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devuelve los puntos de vida
+
+\begin{DoxyReturn}{Returns}
+Los puntos de vida del jugador 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a5d3a16e0b04416095863426a2f7df163}\label{classpersonatges_1_1_jugador_a5d3a16e0b04416095863426a2f7df163}} 
+\index{personatges.Jugador@{personatges.Jugador}!lleva@{lleva}}
+\index{lleva@{lleva}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{lleva()}{lleva()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+lleva (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classaltres_1_1_poder}{Poder}}}]{poder }\end{DoxyParamCaption})}
+
+La función \char`\"{}llevar\char`\"{} elimina un \char`\"{}poder\char`\"{} de una lista de \char`\"{}poders\char`\"{} si ya está presente en la lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em poder} & poder es un objeto de la clase Poder, que se pasa como parámetro al método método llevar. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_acbee2c88e5f6b8f6b8c08d7d63c89150}\label{classpersonatges_1_1_jugador_acbee2c88e5f6b8f6b8c08d7d63c89150}} 
+\index{personatges.Jugador@{personatges.Jugador}!posa@{posa}}
+\index{posa@{posa}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{posa()}{posa()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+posa (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classaltres_1_1_poder}{Poder}}}]{poder }\end{DoxyParamCaption})}
+
+La función \char`\"{}posa\char`\"{} añade un objeto \char`\"{}\+Poder\char`\"{} a una lista de objetos \char`\"{}\+Poder\char`\"{} si no está ya en la lista.
+
+
+\begin{DoxyParams}{Parameters}
+{\em poder} & El parámetro \char`\"{}poder\char`\"{} es un objeto de la clase \char`\"{}\+Poder\char`\"{}. Se pasa como al método \char`\"{}posa\char`\"{}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a334a6bc3c685f3fe524cc604363d8ed5}\label{classpersonatges_1_1_jugador_a334a6bc3c685f3fe524cc604363d8ed5}} 
+\index{personatges.Jugador@{personatges.Jugador}!setEquip@{setEquip}}
+\index{setEquip@{setEquip}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{setEquip()}{setEquip()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+set\+Equip (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classaltres_1_1_equip}{Equip}}}]{equip }\end{DoxyParamCaption})}
+
+Establecemos el equipo del jugador
+
+
+\begin{DoxyParams}{Parameters}
+{\em equip} & El equipo \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_ad9cfc902d065e0df148f3cff1ad26bc3}\label{classpersonatges_1_1_jugador_ad9cfc902d065e0df148f3cff1ad26bc3}} 
+\index{personatges.Jugador@{personatges.Jugador}!setNom@{setNom}}
+\index{setNom@{setNom}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{setNom()}{setNom()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+set\+Nom (\begin{DoxyParamCaption}\item[{String}]{nom }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Establece el nombre del jugador
+
+
+\begin{DoxyParams}{Parameters}
+{\em nom} & El nombre del jugador \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_aeecb69f4b006490cf9783305d6784840}\label{classpersonatges_1_1_jugador_aeecb69f4b006490cf9783305d6784840}} 
+\index{personatges.Jugador@{personatges.Jugador}!setPoders@{setPoders}}
+\index{setPoders@{setPoders}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{setPoders()}{setPoders()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+set\+Poders (\begin{DoxyParamCaption}\item[{Array\+List$<$ \mbox{\hyperlink{classaltres_1_1_poder}{Poder}} $>$}]{poders }\end{DoxyParamCaption})}
+
+Establecemos los poderes del jugador.
+
+
+\begin{DoxyParams}{Parameters}
+{\em poders} & Una lista con todos los poderes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_abc1b541bbcd6eee6e57e7f4030712b59}\label{classpersonatges_1_1_jugador_abc1b541bbcd6eee6e57e7f4030712b59}} 
+\index{personatges.Jugador@{personatges.Jugador}!setPuntsAtac@{setPuntsAtac}}
+\index{setPuntsAtac@{setPuntsAtac}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{setPuntsAtac()}{setPuntsAtac()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+set\+Punts\+Atac (\begin{DoxyParamCaption}\item[{int}]{punts\+Atac }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Estable los puntos de ataque del jugador
+
+
+\begin{DoxyParams}{Parameters}
+{\em punts\+Atac} & Los puntos de ataque \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_afc1169ecf9277a3bda11307608ea1bd4}\label{classpersonatges_1_1_jugador_afc1169ecf9277a3bda11307608ea1bd4}} 
+\index{personatges.Jugador@{personatges.Jugador}!setPuntsDefensa@{setPuntsDefensa}}
+\index{setPuntsDefensa@{setPuntsDefensa}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{setPuntsDefensa()}{setPuntsDefensa()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+set\+Punts\+Defensa (\begin{DoxyParamCaption}\item[{int}]{punts\+Defensa }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Establece los puntos de defensa
+
+
+\begin{DoxyParams}{Parameters}
+{\em punts\+Defensa} & Los puntos de defensa \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a661fe2a01afde5154368d29e8d959993}\label{classpersonatges_1_1_jugador_a661fe2a01afde5154368d29e8d959993}} 
+\index{personatges.Jugador@{personatges.Jugador}!setVides@{setVides}}
+\index{setVides@{setVides}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{setVides()}{setVides()}}
+{\footnotesize\ttfamily void personatges.\+Jugador.\+set\+Vides (\begin{DoxyParamCaption}\item[{int}]{vides }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Establecemos los puntos de vida
+
+
+\begin{DoxyParams}{Parameters}
+{\em vides} & Los puntos de vida \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classpersonatges_1_1_jugador_a7dc125a0e8016a368e780dd415ba7ead}\label{classpersonatges_1_1_jugador_a7dc125a0e8016a368e780dd415ba7ead}} 
+\index{personatges.Jugador@{personatges.Jugador}!toString@{toString}}
+\index{toString@{toString}!personatges.Jugador@{personatges.Jugador}}
+\doxysubsubsection{\texorpdfstring{toString()}{toString()}}
+{\footnotesize\ttfamily String personatges.\+Jugador.\+to\+String (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Devolvemos un string con todos los datos sobre un jugador
+
+\begin{DoxyReturn}{Returns}
+El string con los datos del jugador 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/\+TESTER/\+One\+Drive/\+Documentos/\+Joc\+De\+Rol\+Fernando\+Pereira/src/main/java/personatges/Jugador.\+java\end{DoxyCompactItemize}
