@@ -194,9 +194,7 @@ public class Jugadors {
         // detenemos la función.
         if (!Poders.llista.isEmpty()) {
             System.out.println("Poderes disponibles: ");
-            for (Poder poder : Poders.llista) {
-                System.out.println(poder.toString());
-            }
+            Poders.mostrarPoderes();
         } else {
             System.out.println("No hay poderes disponibles");
             return;
@@ -206,9 +204,7 @@ public class Jugadors {
         // detenemos la función.
         if (!llista.isEmpty()) {
             System.out.println("Jugadores disponibles: ");
-            for (Jugador jugador : llista) {
-                System.out.println(jugador.toString());
-            }
+            mostrarJugadores();
         } else {
             System.out.println("No hay jugadores disponibles");
             return;
@@ -283,7 +279,11 @@ public class Jugadors {
      * Esta función elimina un poder de la lista de poderes de un jugador.
      */
     public static void eliminarPoder() {
-
+        
+        // Mostramos los jugadores disponibles
+        System.out.println("Jugadores disponibles: ");
+        mostrarJugadores();
+        
         // Obtenemos el jugador
 
         Jugador jugadorAsignar = buscar();
@@ -297,7 +297,7 @@ public class Jugadors {
         if (jugadorAsignar.getPoders().isEmpty()) {
             System.out.println("El jugador no tiene poderes");
         } else {
-            System.out.println("Poderes del jugador: ");
+            System.out.println("\nPoderes del jugador: ");
             for (Poder poder : jugadorAsignar.getPoders()) {
                 System.out.println(poder);
             }

@@ -6,6 +6,7 @@ package inici;
 
 import altres.Poder;
 import java.util.ArrayList;
+import personatges.Jugador;
 import static teclat.Pantalla.*;
 import teclat.Teclat;
 
@@ -103,6 +104,11 @@ public class Poders {
         if (poderAEliminar != null) {
             System.out.println("Poder " + poderAEliminar.getNom() + " eliminado correctamente");
             llista.remove(poderAEliminar);
+            // Eliminamos este poder de todos los jugadores
+            for (Jugador jugador : Jugadors.llista) {
+                jugador.getPoders().remove(poderAEliminar);
+            }
+
         } else {
             System.out.println("No se encontró el poder ");
         }
