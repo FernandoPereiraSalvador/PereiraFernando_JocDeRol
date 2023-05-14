@@ -33,14 +33,12 @@ public class Poders {
             opcion = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcion) {
-                case 1 ->
-                    crear();
-                case 2 ->
-                    consultar();
-                case 3 ->
-                    eliminar();
-                default ->
-                    System.out.println("No se ha encontrado la opcion");
+                case 1 -> crear();
+                case 2 -> consultar();
+                case 3 -> eliminar();
+                case 0 -> {
+                }
+                default -> System.out.println("Has introducido una opción erronea");
             }
         }
     }

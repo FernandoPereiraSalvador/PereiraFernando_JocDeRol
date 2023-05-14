@@ -20,7 +20,7 @@ import static teclat.Pantalla.*;
  */
 public class Jugadors {
 
-    static ArrayList<Jugador> llista = new ArrayList<Jugador>();
+    static ArrayList<Jugador> llista = new ArrayList<>();
 
     /**
      * Esta función muestra un menú con opciones para crear, consultar, eliminar, asignar a un equipo, eliminar de un equipo, y asignar poder a los jugadores de un partido
@@ -66,8 +66,17 @@ public class Jugadors {
      * Esta función crea un nuevo objeto jugador basado en la entrada del usuario y lo añade a una lista de jugadores, comprobando si hay duplicados antes de añadirlo.
      */
     public static void crear() {
-        char tipoJugador = Teclat.lligChar("Introduce el tipo de jugador", "HGA");
+
         String nom = Teclat.lligString("Introduce el nombre: ");
+
+        for (Jugador jugador : llista) {
+            if (jugador.getNom().equals(nom)) {
+                System.out.println("El jugador ya existe");
+                return;
+            }
+        }
+
+        char tipoJugador = Teclat.lligChar("Introduce el tipo de jugador", "HGA");
         int puntsAtac = Teclat.lligInt("Introduce los puntos de ataque: ", 1, 100);
         int puntsDefensa = Math.abs(puntsAtac - 100);
 
@@ -83,19 +92,8 @@ public class Jugadors {
             default -> {
             }
         }
-        boolean encontrado = false;
-        for (Jugador jugador : llista) {
-            if (jugador.getNom().equals(nuevoJugador.getNom())) {
-                encontrado = true;
-            }
-        }
+        llista.add(nuevoJugador);
 
-        if (encontrado) {
-            System.out.println("El jugador ya existe");
-        } else {
-            llista.add(nuevoJugador);
-            System.out.println("El jugador se ha creado correctamente");
-        }
     }
 
     /**
@@ -119,19 +117,12 @@ public class Jugadors {
     public static void eliminar() {
 
         String nom = Teclat.lligString("Introduce el nombre: ");
-        boolean Noeliminado = true;
+        boolean eliminado = llista.removeIf(jugador -> jugador.getNom().equals(nom));
 
-        for (Jugador jugador : llista) {
-            if (jugador.getNom().equals(nom)) {
-                llista.remove(jugador);
-                System.out.println("Se ha eliminado el jugador correctamente");
-                Noeliminado = false;
-                break;
-            }
-        }
-
-        if (Noeliminado) {
-            System.out.println("No se ha encontrado al jugador");
+        if (eliminado) {
+            System.out.println("Se ha eliminado el jugador " + nom +" correctamente");
+        } else {
+            System.out.println("No se ha encontrado al jugador " + nom);
         }
 
     }
@@ -264,6 +255,7 @@ public class Jugadors {
     }
 
     public static void matar(Jugador matado) {
+        
         llista.remove(matado);
     }
 
@@ -290,16 +282,16 @@ public class Jugadors {
 
             String poderNombre = Teclat.lligString("Introduce el nombre del poder: ");
             Poder poderEliminar = null;
-            
+
             for (Poder poder : jugadorAsignar.getPoders()) {
-                if(poder.getNom() == null ? poderNombre == null : poder.getNom().equals(poderNombre)){
+                if (poder.getNom() == null ? poderNombre == null : poder.getNom().equals(poderNombre)) {
                     poderEliminar = poder;
                 }
             }
-            
-            if(poderEliminar!=null && jugadorAsignar!=null){
+
+            if (poderEliminar != null && jugadorAsignar != null) {
                 jugadorAsignar.lleva(poderEliminar);
-            }else{
+            } else {
                 System.out.println("El jugador o el poder no existen");
             }
 

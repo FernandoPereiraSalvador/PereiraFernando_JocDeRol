@@ -207,6 +207,7 @@ public class Jugador {
         if (this.getVides() <= 0) {
             Jugadors.matar(this);
         }
+
         System.out.println("---");
     }
 
@@ -214,7 +215,7 @@ public class Jugador {
      * La función calcula el daño recibido por un personaje basado en los puntos de ataque y defensa, y actualiza sus puntos de salud restantes en consecuencia.
      *
      * @param daño Cantidad de daño infligido al personaje ataca
-     * 
+     *
      */
     protected void esColpejatAmb(int daño) {
         int BonoAtaque = 0;
@@ -246,13 +247,13 @@ public class Jugador {
         nomClasse = nomClasse.substring(nomClasse.lastIndexOf(".") + 1);
         String poderes = "";
 
-        if(!this.poders.isEmpty()){
+        if (!this.poders.isEmpty()) {
             poderes = "Poderes: ";
             for (Poder poder : poders) {
                 poderes += poder.getNom() + " ";
             }
         }
-        
+
         return nom + "(" + nomClasse + ", PA:" + puntsAtac + ", PD:" + puntsDefensa + ", PV:" + vides + ")" + poderes;
     }
 
@@ -280,9 +281,9 @@ public class Jugador {
      */
     public void posa(Poder poder) {
         boolean añadido = this.poders.add(poder);
-        if(añadido){
+        if (añadido) {
             System.out.println("El poder " + poder.getNom() + " se ha añadido correctamente");
-        }else{
+        } else {
             System.out.println("Error");
         }
     }
@@ -294,9 +295,9 @@ public class Jugador {
      */
     public void lleva(Poder poder) {
         boolean eliminado = this.poders.remove(poder);
-        if(eliminado){
+        if (eliminado) {
             System.out.println("El poder " + poder.getNom() + " se ha eliminado correctamente");
-        }else{
+        } else {
             System.out.println("Error");
         }
     }

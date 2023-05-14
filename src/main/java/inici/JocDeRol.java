@@ -32,14 +32,12 @@ public class JocDeRol {
             opcionMenu = Teclat.lligInt("Introduce la opcion: ");
 
             switch (opcionMenu) {
-                case 1 ->
-                    Jugadors.menu();
-                case 2 ->
-                    Equips.menu();
-                case 3 ->
-                    Poders.menu();
-                default ->
-                    System.out.println("Has introducido una opción erronea");
+                case 1 -> Jugadors.menu();
+                case 2 -> Equips.menu();
+                case 3 -> Poders.menu();
+                case 0 -> {
+                }
+                default -> System.out.println("Has introducido una opción erronea");
             }
 
         }
@@ -94,8 +92,8 @@ public class JocDeRol {
             return;
         }
 
-        Jugador randomJugador1 = null;
-        Jugador randomJugador2 = null;
+        Jugador randomJugador1;
+        Jugador randomJugador2;
 
         // Variables para detectar caso de empate
         int contadorEmpates = 0;
@@ -138,7 +136,7 @@ public class JocDeRol {
 
             if (contadorEmpates == maxEmpates) {
                 System.out.println("Ha habido un empate");
-                System.out.println("Los jugadores que han ganado son: ");
+                System.out.println("Los jugadores que han empatado son: ");
                 for (Jugador jugador : Jugadors.llista) {
                     System.out.println(jugador.toString());
                 }
@@ -164,8 +162,8 @@ public class JocDeRol {
         }
 
         // Variables para detectar caso de empate
-        Jugador anterior1 = null;
-        Jugador anterior2 = null;
+        Jugador anterior1;
+        Jugador anterior2;
         int contadorEmpates = 0;
         int maxEmpates = 10;
 
@@ -202,7 +200,7 @@ public class JocDeRol {
                             contadorEmpates = 0;
                         } else {
                             System.out.println("Ha habido un empate");
-                            System.out.println("Los jugadores que han ganado son: ");
+                            System.out.println("Los jugadores que han empatado son: ");
                             for (Jugador jugadorGanador : Jugadors.llista) {
                                 System.out.println(jugadorGanador);
                             }
@@ -242,11 +240,9 @@ public class JocDeRol {
             switch (opcion) {
                 case 1 -> {
                     menuConfiguracio();
-                    opcion = -1;
                 }
                 case 2 -> {
                     jugar();
-                    opcion = -1;
                 }
                 case 0 -> {
                     salir = Teclat.lligBoolean("¿Seguro que desea salir?");
